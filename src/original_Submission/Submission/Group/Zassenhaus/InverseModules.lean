@@ -1,0 +1,57 @@
+import Submission.Group.Zassenhaus.PolynomialConstructorSupport
+import Submission.Group.Zassenhaus.AtomicTwoPackets
+import Submission.Group.Zassenhaus.CompletePetrescoRecipe
+import Submission.Group.Zassenhaus.PacketCompression
+import Submission.Group.Zassenhaus.Polynomial
+import Submission.Group.Zassenhaus.CorrectionSemantics
+import Submission.Group.Zassenhaus.RecursiveObstructions
+import Submission.Group.Zassenhaus.LabelledWordMovements
+import Submission.Group.Zassenhaus.LabelledBlockMovements
+import Submission.Group.Zassenhaus.BlockFamily
+import Submission.Group.Zassenhaus.PositiveDegreeRecipes
+import Submission.Group.Zassenhaus.Inverse
+import Submission.Group.Zassenhaus.TruncatedTraceEvaluation
+import Submission.Group.Zassenhaus.AtomParentHistories
+import Submission.Group.Zassenhaus.TruncatedRecipeInventories
+import Submission.Group.Zassenhaus.FamilyOperationalEndpoint
+import Submission.Group.Zassenhaus.OperationalInventory
+import Submission.Group.Zassenhaus.FamilyOperationalSupport
+import Submission.Group.Zassenhaus.CompatiblePacketRouting
+import Submission.Group.Zassenhaus.SignedProfilePackets
+import Submission.Group.Zassenhaus.InverseUniversalBlock
+import Submission.Group.Zassenhaus.CorrectionClosureVocabulary
+import Submission.Group.Zassenhaus.InverseUniversalClosure
+import Submission.Group.Zassenhaus.ErasedWordSkeleton
+import Submission.Group.Zassenhaus.PolynomialBracketSupport
+import Submission.Group.Zassenhaus.HallTreeExpansion
+import Submission.Group.Zassenhaus.SignedReductionFactors
+import Submission.Group.Zassenhaus.SignedCorrectionSemantics
+import Submission.Group.Zassenhaus.CoefficientNegationRouting
+import Submission.Group.Zassenhaus.PolynomialRankedSupport
+import Submission.Group.Zassenhaus.PolynomialConcrete
+import Submission.Group.Zassenhaus.SignCorrectedSwaps
+import Submission.Group.Zassenhaus.ReverseOrientationResiduals
+import Submission.Group.Zassenhaus.NonbasicChildFrontier
+import Submission.Group.Zassenhaus.JacobiFrontierRouting
+import Submission.Group.Zassenhaus.JacobiContinuationBuilders
+import Submission.Group.Zassenhaus.RootSwapNormalization
+import Submission.Group.Zassenhaus.HallRankDescent
+import
+Submission.Group.Zassenhaus.PolynomialLexicographicScheduling
+import Submission.Group.Zassenhaus.RankedChildSources
+import Submission.Group.Zassenhaus.RankedStructuralRestarts
+import Submission.Group.Zassenhaus.RankedResidualRecursion
+import Submission.Group.Zassenhaus.OuterBracketRecollection
+import Submission.Group.Zassenhaus.LocalResidualBranches
+import Submission.Group.Zassenhaus.OuterResidualInterfaces
+import Submission.Group.Zassenhaus.FullWeightFactory
+import Submission.Group.Zassenhaus.RepeatedRightCollection
+import Submission.Group.Zassenhaus.RightContextualCollection
+import Submission.Group.Zassenhaus.RightSubtreeRecursion
+
+/-!
+# Product and inverse collection theory
+
+Standalone umbrella import for the constructive Claim 8 collection layers.
+The established project graph intentionally does not import this file.
+-/

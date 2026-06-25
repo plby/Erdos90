@@ -1,0 +1,28 @@
+import Submission.ClassField.CyclotomicBrauer.LocalGlobal
+import Submission.ClassField.CyclotomicBrauer.Cyclotomic
+import Submission.ClassField.CyclotomicBrauer.LocalizationStatements
+import Submission.ClassField.CyclotomicBrauer.CohomologicalInjection
+import Submission.ClassField.CyclotomicBrauer.IdeleClassRepresentation
+import Submission.ClassField.CyclotomicBrauer.FiniteBrauerLocalization
+import Submission.ClassField.CyclotomicBrauer.LocalizationInjectivity
+import Submission.ClassField.CyclotomicBrauer.DirectLimitInjection
+import Submission.ClassField.CyclotomicBrauer.FinitePrime
+import Submission.ClassField.CyclotomicBrauer.PlaceAlgEquiv
+import Submission.ClassField.CyclotomicBrauer.RationalPrimesBelow
+import Submission.ClassField.CyclotomicBrauer.CompletionDegree
+import Submission.ClassField.CyclotomicBrauer.CompletionEquiv
+import Submission.ClassField.CyclotomicBrauer.OrderGrowth
+import Submission.ClassField.CyclotomicBrauer.RationalPrimeTransport
+import Submission.ClassField.CyclotomicBrauer.CyclotomicLocalDegree
+import Submission.ClassField.CyclotomicBrauer.OddPowerField
+import Submission.ClassField.CyclotomicBrauer.TwoPowerField
+import Submission.ClassField.CyclotomicBrauer.PrimePowerBlocks
+import Submission.ClassField.CyclotomicBrauer.CompositumArithmetic
+import Submission.ClassField.CyclotomicBrauer.CoprimeCompositum
+import Submission.ClassField.CyclotomicBrauer.CyclotomicCompositum
+import Submission.ClassField.CyclotomicBrauer.RationalCompositum
+import Submission.ClassField.CyclotomicBrauer.RationalBaseChange
+import Submission.ClassField.CyclotomicBrauer.TotallyComplex
+import Submission.ClassField.CyclotomicBrauer.PlaceAlgEquiv
+
+/-! # Chapter VII, Section 7: application to the Brauer group -/

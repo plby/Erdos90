@@ -1,0 +1,1 @@
+import Submission.FieldTheory.TameThreeKoch.LocalObstructionsVanish

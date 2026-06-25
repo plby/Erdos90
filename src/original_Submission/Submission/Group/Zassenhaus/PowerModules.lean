@@ -1,0 +1,173 @@
+import Submission.Group.Zassenhaus.ConcretePackets
+import Submission.Group.Zassenhaus.TruncatedConcretePackets
+import Submission.Group.Zassenhaus.WordExpansions
+import Submission.Group.Zassenhaus.InitialFamilies
+import Submission.Group.Zassenhaus.FamilyData
+import Submission.Group.Zassenhaus.Constructors
+import Submission.Group.Zassenhaus.CoordinateInsertionScheduling
+import Submission.Group.Zassenhaus.ScaledSources
+import Submission.Group.Zassenhaus.HighWeightSources
+import Submission.Group.Zassenhaus.IntegerScaling
+import Submission.Group.Zassenhaus.ClassTwoCollection
+import Submission.Group.Zassenhaus.ClassTwo
+import Submission.Group.Zassenhaus.SemanticInsertionScheduling
+import Submission.Group.Zassenhaus.SemanticCorrectionDelegation
+import Submission.Group.Zassenhaus.SemanticNormalizerRecursion
+import Submission.Group.Zassenhaus.SemanticObstructionScheduling
+import Submission.Group.Zassenhaus.CoordinateEndpointStrata
+import Submission.Group.Zassenhaus.CoordinateStratumScheduling
+import Submission.Group.Zassenhaus.SemanticPacketFactories
+import Submission.Group.Zassenhaus.SemanticInsertionDerivations
+import Submission.Group.Zassenhaus.UniversalCorrectionFactories
+import Submission.Group.Zassenhaus.UniversalCollectionReduction
+import Submission.Group.Zassenhaus.CoordinateTailSplicing
+import Submission.Group.Zassenhaus.Active
+import Submission.Group.Zassenhaus.SharpCorrectionNormalization
+import Submission.Group.Zassenhaus.SharpNormalizerFamilies
+import Submission.Group.Zassenhaus.SharpCorrectionDescent
+import Submission.Group.Zassenhaus.SharpHigherRouting
+import Submission.Group.Zassenhaus.SharpHigherReduction
+import Submission.Group.Zassenhaus.SharpActiveMovements
+import Submission.Group.Zassenhaus.SharpActiveBlock
+import Submission.Group.Zassenhaus.SharpActiveInterleaving
+import Submission.Group.Zassenhaus.SharpCollectorReduction
+import Submission.Group.Zassenhaus.RestrictedSharp
+import Submission.Group.Zassenhaus.ReachableUniversalReduction
+import Submission.Group.Zassenhaus.CanonicalHallRecollection
+import Submission.Group.Zassenhaus.TwoSourcedInput
+import Submission.Group.Zassenhaus.FormulaChooseSubstitution
+import Submission.Group.Zassenhaus.RewriteMembership
+import Submission.Group.Zassenhaus.FactorSourceReduction
+import Submission.Group.Zassenhaus.UniversalSourceCollection
+import Submission.Group.Zassenhaus.TreeCompression
+import Submission.Group.Zassenhaus.ReductionFactors
+import Submission.Group.Zassenhaus.ReductionRecollection
+import Submission.Group.Zassenhaus.ReductionComparison
+import Submission.Group.Zassenhaus.ReductionSourceCollection
+import
+  Submission.Group.Zassenhaus.ReductionAutomaticCollection
+import Submission.Group.Zassenhaus.BasicTreeReduction
+import Submission.Group.HallBasic.ExplicitCoordinatePackets
+import Submission.Group.Zassenhaus.Jacobi
+import Submission.Group.HallBasic.JacobiFrontierChildren
+import Submission.Group.Zassenhaus.ChildrenJacobiOrientation
+import Submission.Group.Zassenhaus.RootFrontierCollection
+import Submission.Group.Zassenhaus.ConcreteRoutedCollection
+import Submission.Group.Zassenhaus.RootSwapValue
+import Submission.Group.Zassenhaus.ReductionResidualNormalization
+import Submission.Group.Zassenhaus.OuterWorklistRecollection
+import Submission.Group.Zassenhaus.Packet
+import Submission.Group.Zassenhaus.BracketLexicographicScheduling
+import Submission.Group.Zassenhaus.RankedTaskSource
+import Submission.Group.Zassenhaus.SourceRecollectionComposition
+import Submission.Group.Zassenhaus.RankedTaskInduction
+import Submission.Group.Zassenhaus.TaskResidualComposition
+import Submission.Group.Zassenhaus.RankedChildRecollection
+import Submission.Group.Zassenhaus.ResidualSingletonRecollection
+import
+  Submission.Group.Zassenhaus.BracketRecursiveRecollection
+import Submission.Group.Zassenhaus.WorklistRecursiveRecollection
+import Submission.Group.Zassenhaus.ResidualRecursion
+import Submission.Group.Zassenhaus.SourceSupportRaising
+import Submission.Group.Zassenhaus.SourceSupportEndpoint
+import Submission.Group.Zassenhaus.RankedTargetRecollection
+import Submission.Group.Zassenhaus.SourceRecollectionCongruence
+import Submission.Group.Zassenhaus.SourceRecollectionNormalization
+import Submission.Group.Zassenhaus.ReductionOuter
+import Submission.Group.Zassenhaus.ResidualBranch
+import Submission.Group.Zassenhaus.ResidualBaseBranches
+import Submission.Group.Zassenhaus.ResidualBranchCases
+import Submission.Group.Zassenhaus.SharpComparisonRecollection
+import Submission.Group.Zassenhaus.RankedResidual
+import Submission.Group.Zassenhaus.ReductionOuterFactory
+import Submission.Group.Zassenhaus.ResidualFactoryComparison
+import Submission.Group.Zassenhaus.FactoryBranchCases
+import Submission.Group.Zassenhaus.ResidualReachableScheduler
+import Submission.Group.Zassenhaus.ReductionPoweredBridge
+import Submission.Group.Zassenhaus.ComparisonFactoryRouting
+import Submission.Group.Zassenhaus.TransientExponentCarriers
+import Submission.Group.Zassenhaus.TransientPacketSubstitution
+import Submission.Group.Zassenhaus.Attachment
+import Submission.Group.Zassenhaus.Transient
+import Submission.Group.Zassenhaus.PacketClassification
+import Submission.Group.Zassenhaus.FrontierWeightDescent
+import Submission.Group.Zassenhaus.ClassifiedPacketDescent
+import Submission.Group.Zassenhaus.TransientPacketClassification
+import Submission.Group.Zassenhaus.ClassificationCompatibility
+import Submission.Group.Zassenhaus.RewordingCore
+import Submission.Group.Zassenhaus.TransientInversion
+import Submission.Group.Zassenhaus.TransientResidual
+import Submission.Group.Zassenhaus.ResidualPrincipalInventory
+import Submission.Group.Zassenhaus.StrictTail
+import Submission.Group.Zassenhaus.StrictPrincipalCompatibility
+import Submission.Group.Zassenhaus.Ordered
+import Submission.Group.Zassenhaus.BasicTermSemantics
+import Submission.Group.Zassenhaus.PrincipalClassification
+import Submission.Group.Zassenhaus.ContextualRecursion
+import Submission.Group.Zassenhaus.ResidualContextualRecollection
+import Submission.Group.Zassenhaus.ContextualPacketRecursion
+import Submission.Group.Zassenhaus.TransientConjugatedHigher
+import Submission.Group.Zassenhaus.OrderedResidualConjugation
+import
+  Submission.Group.Zassenhaus.OrderedContextualCallback
+import Submission.Group.Zassenhaus.OrderedCallbackTerminal
+import Submission.Group.Zassenhaus.Contexts
+import Submission.Group.Zassenhaus.ContextualCongruence
+import Submission.Group.Zassenhaus.ContextualFrontierRouting
+import Submission.Group.Zassenhaus.TerminalContexts
+import Submission.Group.Zassenhaus.TerminalContextualSplicing
+import Submission.Group.Zassenhaus.TerminalPacketRouting
+import Submission.Group.Zassenhaus.BifurcatedFrontierRouting
+import Submission.Group.Zassenhaus.GeneratedFrontierRouting
+import Submission.Group.Zassenhaus.StructuralRestartRouting
+import Submission.Group.Zassenhaus.GeneratedPacketRouting
+import Submission.Group.Zassenhaus.GeneratedClassifiedRouting
+import Submission.Group.Zassenhaus.StructuralActiveFactory
+import Submission.Group.Zassenhaus.RestartOuterRouting
+import Submission.Group.Zassenhaus.GeneratedOuterRouting
+import
+  Submission.Group.Zassenhaus.GeneratedStructuralRouting
+import Submission.Group.Zassenhaus.FixedPacketRouting
+import
+  Submission.Group.Zassenhaus.FixedRestartBoundary
+import Submission.Group.Zassenhaus.FixedPrincipalRouting
+import Submission.Group.Zassenhaus.FixedUniqueRouting
+import
+  Submission.Group.Zassenhaus.NaturalLiftBoundary
+import
+  Submission.Group.Zassenhaus.UniformPolynomialBoundary
+import
+  Submission.Group.Zassenhaus.UniformCoordinateData
+import Submission.Group.Zassenhaus.SignedOrderedBoundary
+import Submission.Group.Zassenhaus.BlockFormulaSubstitution
+import Submission.Group.Zassenhaus.SignedBlockStabilization
+import Submission.Group.Zassenhaus.InverseUniversalClosure
+import Submission.Group.Zassenhaus.CorrectionClosureVocabulary
+import Submission.Group.Zassenhaus.UniversalSplitBoundary
+import Submission.Group.Zassenhaus.GeneratedRestartRouting
+import
+  Submission.Group.Zassenhaus.GeneratedRestartBoundary
+import
+  Submission.Group.Zassenhaus.GeneratedCorrectionRouting
+import Submission.Group.Zassenhaus.ConjugatedHigherList
+import Submission.Group.Zassenhaus.FrontierRecollection
+import
+  Submission.Group.Zassenhaus.FrontierRecursionCertificate
+import
+  Submission.Group.Zassenhaus.ClassifiedPacketRecollection
+import Submission.Group.Zassenhaus.ContextualOperations
+import Submission.Group.Zassenhaus.ClassifiedPacketTerminal
+import
+  Submission.Group.Zassenhaus.ConcreteClassifiedRecollection
+import Submission.Group.Zassenhaus.ConcretePacketTerminal
+import Submission.Group.Zassenhaus.ContextualRecollection
+import Submission.Group.Zassenhaus.Contextual
+import Submission.Group.Zassenhaus.PoweredBridgeReplacement
+import Submission.Group.Zassenhaus.ClassThree
+
+/-!
+# Standalone symbolic Hall power-collection theory
+
+This umbrella module imports the standalone repeated-power collection
+formalization without adding it to the existing project dependency graph.
+-/
