@@ -1,5 +1,0 @@
-import Submission.Group.NilpotentProducts.CoefficientCombinatorics
-import Submission.Group.NilpotentProducts.HallPetrescoPowers
-import Submission.Group.NilpotentProducts.MultiplicationCoordinates
-import Submission.Group.NilpotentProducts.ReplacementRelations
-import Submission.Group.NilpotentProducts.TwoSidedWords

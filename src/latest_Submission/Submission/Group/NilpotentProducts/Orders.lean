@@ -1,8 +1,0 @@
-import Submission.Group.NilpotentProducts.EvenClassThree
-import Submission.Group.NilpotentProducts.FiniteHallFactors
-import Submission.Group.NilpotentProducts.HallTrees
-import Submission.Group.NilpotentProducts.OddClassThree
-import Submission.Group.NilpotentProducts.PrimePowerShift
-import Submission.Group.NilpotentProducts.TopWeight
-import Submission.Group.NilpotentProducts.TripleCommutators
-import Submission.Group.NilpotentProducts.TwoInvolutions
