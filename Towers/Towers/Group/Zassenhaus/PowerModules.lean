@@ -1,0 +1,173 @@
+import Towers.Group.Zassenhaus.ConcretePackets
+import Towers.Group.Zassenhaus.TruncatedConcretePackets
+import Towers.Group.Zassenhaus.WordExpansions
+import Towers.Group.Zassenhaus.InitialFamilies
+import Towers.Group.Zassenhaus.FamilyData
+import Towers.Group.Zassenhaus.Constructors
+import Towers.Group.Zassenhaus.CoordinateInsertionScheduling
+import Towers.Group.Zassenhaus.ScaledSources
+import Towers.Group.Zassenhaus.HighWeightSources
+import Towers.Group.Zassenhaus.IntegerScaling
+import Towers.Group.Zassenhaus.ClassTwoCollection
+import Towers.Group.Zassenhaus.ClassTwo
+import Towers.Group.Zassenhaus.SemanticInsertionScheduling
+import Towers.Group.Zassenhaus.SemanticCorrectionDelegation
+import Towers.Group.Zassenhaus.SemanticNormalizerRecursion
+import Towers.Group.Zassenhaus.SemanticObstructionScheduling
+import Towers.Group.Zassenhaus.CoordinateEndpointStrata
+import Towers.Group.Zassenhaus.CoordinateStratumScheduling
+import Towers.Group.Zassenhaus.SemanticPacketFactories
+import Towers.Group.Zassenhaus.SemanticInsertionDerivations
+import Towers.Group.Zassenhaus.UniversalCorrectionFactories
+import Towers.Group.Zassenhaus.UniversalCollectionReduction
+import Towers.Group.Zassenhaus.CoordinateTailSplicing
+import Towers.Group.Zassenhaus.Active
+import Towers.Group.Zassenhaus.SharpCorrectionNormalization
+import Towers.Group.Zassenhaus.SharpNormalizerFamilies
+import Towers.Group.Zassenhaus.SharpCorrectionDescent
+import Towers.Group.Zassenhaus.SharpHigherRouting
+import Towers.Group.Zassenhaus.SharpHigherReduction
+import Towers.Group.Zassenhaus.SharpActiveMovements
+import Towers.Group.Zassenhaus.SharpActiveBlock
+import Towers.Group.Zassenhaus.SharpActiveInterleaving
+import Towers.Group.Zassenhaus.SharpCollectorReduction
+import Towers.Group.Zassenhaus.RestrictedSharp
+import Towers.Group.Zassenhaus.ReachableUniversalReduction
+import Towers.Group.Zassenhaus.CanonicalHallRecollection
+import Towers.Group.Zassenhaus.TwoSourcedInput
+import Towers.Group.Zassenhaus.FormulaChooseSubstitution
+import Towers.Group.Zassenhaus.RewriteMembership
+import Towers.Group.Zassenhaus.FactorSourceReduction
+import Towers.Group.Zassenhaus.UniversalSourceCollection
+import Towers.Group.Zassenhaus.TreeCompression
+import Towers.Group.Zassenhaus.ReductionFactors
+import Towers.Group.Zassenhaus.ReductionRecollection
+import Towers.Group.Zassenhaus.ReductionComparison
+import Towers.Group.Zassenhaus.ReductionSourceCollection
+import
+  Towers.Group.Zassenhaus.ReductionAutomaticCollection
+import Towers.Group.Zassenhaus.BasicTreeReduction
+import Towers.Group.HallBasic.ExplicitCoordinatePackets
+import Towers.Group.Zassenhaus.Jacobi
+import Towers.Group.HallBasic.JacobiFrontierChildren
+import Towers.Group.Zassenhaus.ChildrenJacobiOrientation
+import Towers.Group.Zassenhaus.RootFrontierCollection
+import Towers.Group.Zassenhaus.ConcreteRoutedCollection
+import Towers.Group.Zassenhaus.RootSwapValue
+import Towers.Group.Zassenhaus.ReductionResidualNormalization
+import Towers.Group.Zassenhaus.OuterWorklistRecollection
+import Towers.Group.Zassenhaus.Packet
+import Towers.Group.Zassenhaus.BracketLexicographicScheduling
+import Towers.Group.Zassenhaus.RankedTaskSource
+import Towers.Group.Zassenhaus.SourceRecollectionComposition
+import Towers.Group.Zassenhaus.RankedTaskInduction
+import Towers.Group.Zassenhaus.TaskResidualComposition
+import Towers.Group.Zassenhaus.RankedChildRecollection
+import Towers.Group.Zassenhaus.ResidualSingletonRecollection
+import
+  Towers.Group.Zassenhaus.BracketRecursiveRecollection
+import Towers.Group.Zassenhaus.WorklistRecursiveRecollection
+import Towers.Group.Zassenhaus.ResidualRecursion
+import Towers.Group.Zassenhaus.SourceSupportRaising
+import Towers.Group.Zassenhaus.SourceSupportEndpoint
+import Towers.Group.Zassenhaus.RankedTargetRecollection
+import Towers.Group.Zassenhaus.SourceRecollectionCongruence
+import Towers.Group.Zassenhaus.SourceRecollectionNormalization
+import Towers.Group.Zassenhaus.ReductionOuter
+import Towers.Group.Zassenhaus.ResidualBranch
+import Towers.Group.Zassenhaus.ResidualBaseBranches
+import Towers.Group.Zassenhaus.ResidualBranchCases
+import Towers.Group.Zassenhaus.SharpComparisonRecollection
+import Towers.Group.Zassenhaus.RankedResidual
+import Towers.Group.Zassenhaus.ReductionOuterFactory
+import Towers.Group.Zassenhaus.ResidualFactoryComparison
+import Towers.Group.Zassenhaus.FactoryBranchCases
+import Towers.Group.Zassenhaus.ResidualReachableScheduler
+import Towers.Group.Zassenhaus.ReductionPoweredBridge
+import Towers.Group.Zassenhaus.ComparisonFactoryRouting
+import Towers.Group.Zassenhaus.TransientExponentCarriers
+import Towers.Group.Zassenhaus.TransientPacketSubstitution
+import Towers.Group.Zassenhaus.Attachment
+import Towers.Group.Zassenhaus.Transient
+import Towers.Group.Zassenhaus.PacketClassification
+import Towers.Group.Zassenhaus.FrontierWeightDescent
+import Towers.Group.Zassenhaus.ClassifiedPacketDescent
+import Towers.Group.Zassenhaus.TransientPacketClassification
+import Towers.Group.Zassenhaus.ClassificationCompatibility
+import Towers.Group.Zassenhaus.RewordingCore
+import Towers.Group.Zassenhaus.TransientInversion
+import Towers.Group.Zassenhaus.TransientResidual
+import Towers.Group.Zassenhaus.ResidualPrincipalInventory
+import Towers.Group.Zassenhaus.StrictTail
+import Towers.Group.Zassenhaus.StrictPrincipalCompatibility
+import Towers.Group.Zassenhaus.Ordered
+import Towers.Group.Zassenhaus.BasicTermSemantics
+import Towers.Group.Zassenhaus.PrincipalClassification
+import Towers.Group.Zassenhaus.ContextualRecursion
+import Towers.Group.Zassenhaus.ResidualContextualRecollection
+import Towers.Group.Zassenhaus.ContextualPacketRecursion
+import Towers.Group.Zassenhaus.TransientConjugatedHigher
+import Towers.Group.Zassenhaus.OrderedResidualConjugation
+import
+  Towers.Group.Zassenhaus.OrderedContextualCallback
+import Towers.Group.Zassenhaus.OrderedCallbackTerminal
+import Towers.Group.Zassenhaus.Contexts
+import Towers.Group.Zassenhaus.ContextualCongruence
+import Towers.Group.Zassenhaus.ContextualFrontierRouting
+import Towers.Group.Zassenhaus.TerminalContexts
+import Towers.Group.Zassenhaus.TerminalContextualSplicing
+import Towers.Group.Zassenhaus.TerminalPacketRouting
+import Towers.Group.Zassenhaus.BifurcatedFrontierRouting
+import Towers.Group.Zassenhaus.GeneratedFrontierRouting
+import Towers.Group.Zassenhaus.StructuralRestartRouting
+import Towers.Group.Zassenhaus.GeneratedPacketRouting
+import Towers.Group.Zassenhaus.GeneratedClassifiedRouting
+import Towers.Group.Zassenhaus.StructuralActiveFactory
+import Towers.Group.Zassenhaus.RestartOuterRouting
+import Towers.Group.Zassenhaus.GeneratedOuterRouting
+import
+  Towers.Group.Zassenhaus.GeneratedStructuralRouting
+import Towers.Group.Zassenhaus.FixedPacketRouting
+import
+  Towers.Group.Zassenhaus.FixedRestartBoundary
+import Towers.Group.Zassenhaus.FixedPrincipalRouting
+import Towers.Group.Zassenhaus.FixedUniqueRouting
+import
+  Towers.Group.Zassenhaus.NaturalLiftBoundary
+import
+  Towers.Group.Zassenhaus.UniformPolynomialBoundary
+import
+  Towers.Group.Zassenhaus.UniformCoordinateData
+import Towers.Group.Zassenhaus.SignedOrderedBoundary
+import Towers.Group.Zassenhaus.BlockFormulaSubstitution
+import Towers.Group.Zassenhaus.SignedBlockStabilization
+import Towers.Group.Zassenhaus.InverseUniversalClosure
+import Towers.Group.Zassenhaus.CorrectionClosureVocabulary
+import Towers.Group.Zassenhaus.UniversalSplitBoundary
+import Towers.Group.Zassenhaus.GeneratedRestartRouting
+import
+  Towers.Group.Zassenhaus.GeneratedRestartBoundary
+import
+  Towers.Group.Zassenhaus.GeneratedCorrectionRouting
+import Towers.Group.Zassenhaus.ConjugatedHigherList
+import Towers.Group.Zassenhaus.FrontierRecollection
+import
+  Towers.Group.Zassenhaus.FrontierRecursionCertificate
+import
+  Towers.Group.Zassenhaus.ClassifiedPacketRecollection
+import Towers.Group.Zassenhaus.ContextualOperations
+import Towers.Group.Zassenhaus.ClassifiedPacketTerminal
+import
+  Towers.Group.Zassenhaus.ConcreteClassifiedRecollection
+import Towers.Group.Zassenhaus.ConcretePacketTerminal
+import Towers.Group.Zassenhaus.ContextualRecollection
+import Towers.Group.Zassenhaus.Contextual
+import Towers.Group.Zassenhaus.PoweredBridgeReplacement
+import Towers.Group.Zassenhaus.ClassThree
+
+/-!
+# Standalone symbolic Hall power-collection theory
+
+This umbrella module imports the standalone repeated-power collection
+formalization without adding it to the existing project dependency graph.
+-/

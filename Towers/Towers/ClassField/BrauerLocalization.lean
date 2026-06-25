@@ -1,0 +1,37 @@
+import Towers.ClassField.BrauerLocalization.SumSurjectivity
+import Towers.ClassField.BrauerLocalization.AbsoluteKernelLifting
+import Towers.ClassField.BrauerLocalization.BrauerKernelLifting
+import Towers.ClassField.BrauerLocalization.LocalKernelVanishing
+import Towers.ClassField.BrauerLocalization.ArchimedeanData
+import Towers.ClassField.BrauerLocalization.Main
+import Towers.ClassField.BrauerLocalization.Relative2Comparison
+import Towers.ClassField.BrauerLocalization.RelativeIdele
+import Towers.ClassField.BrauerLocalization.CompletionNaturality
+import Towers.ClassField.BrauerLocalization.CrossedProduct
+import Towers.ClassField.BrauerLocalization.InfiniteCrossedProduct
+import Towers.ClassField.BrauerLocalization.H2Comparison
+import Towers.ClassField.BrauerLocalization.CohomologicalData
+import Towers.ClassField.BrauerLocalization.Injectivity
+import Towers.ClassField.BrauerLocalization.ExactnessAssembly
+import Towers.ClassField.BrauerLocalization.KernelLiftingAssembly
+import Towers.ClassField.BrauerLocalization.KillingSelection
+import Towers.ClassField.BrauerLocalization.CokernelAssembly
+import Towers.ClassField.BrauerLocalization.KernelAssembly
+import Towers.ClassField.BrauerLocalization.HerbrandExact
+import Towers.ClassField.BrauerLocalization.LocalHilbert90
+import Towers.ClassField.BrauerLocalization.FiniteTateZero
+import Towers.ClassField.BrauerLocalization.FiniteZeroDirect
+import Towers.ClassField.BrauerLocalization.InfiniteTateZero
+import Towers.ClassField.BrauerLocalization.LocalTateZero
+import Towers.ClassField.BrauerLocalization.RestrictedProductZero
+import Towers.ClassField.BrauerLocalization.RestrictedNegOne
+import Towers.ClassField.BrauerLocalization.IdeleIdealSupport
+import Towers.ClassField.BrauerLocalization.FiniteCyclicSequence
+import Towers.ClassField.BrauerLocalization.FiniteCyclicCohomology
+import Towers.ClassField.BrauerLocalization.SpectralBaseChange
+import Towers.ClassField.BrauerLocalization.NormIndexConsequences
+import Towers.ClassField.BrauerLocalization.CyclicIdeleCohomology
+
+/-!
+# Assembly modules for CFT Theorem VIII.4.2
+-/

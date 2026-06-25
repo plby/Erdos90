@@ -1,0 +1,26 @@
+import Towers.ClassField.KummerNormIndex.CoprimeExponent
+import Towers.ClassField.KummerNormIndex.SubgroupIndex
+import Towers.ClassField.KummerNormIndex.PowerIndex
+import Towers.ClassField.KummerNormIndex.IdeleClassQuotient
+import Towers.ClassField.KummerNormIndex.NormExponent
+import Towers.ClassField.KummerNormIndex.CyclotomicDegree
+import Towers.ClassField.KummerNormIndex.CyclotomicCompositum
+import Towers.ClassField.KummerNormIndex.IdeleExtensionTower
+import Towers.ClassField.KummerNormIndex.BaseChangeNorm
+import Towers.ClassField.KummerNormIndex.CyclotomicBaseChange
+import Towers.ClassField.KummerNormIndex.CompletionRestriction
+import Towers.ClassField.KummerNormIndex.KummerBridge
+import Towers.ClassField.KummerNormIndex.IdeleSubgroup
+import Towers.ClassField.KummerNormIndex.LocalNormBridges
+import Towers.ClassField.KummerNormIndex.ComplexAbsoluteValue
+import Towers.ClassField.KummerNormIndex.LocalPowerIndex
+import Towers.ClassField.KummerNormIndex.PlaceValue
+import Towers.ClassField.KummerNormIndex.IntersectionPower
+import Towers.ClassField.KummerNormIndex.KummerPairing
+import Towers.ClassField.KummerNormIndex.NthPowerPlace
+import Towers.ClassField.KummerNormIndex.KummerExtension
+import Towers.ClassField.KummerNormIndex.LocalSplitting
+import Towers.ClassField.KummerNormIndex.LocalCriterionIdeles
+import Towers.ClassField.KummerNormIndex.SecondInequalityTower
+
+/-! # Chapter VII, Section 6: algebraic proof of the second inequality -/

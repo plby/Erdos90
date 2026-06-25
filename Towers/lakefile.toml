@@ -1,0 +1,25 @@
+name = "Towers"
+version = "0.1.0"
+keywords = ["math"]
+defaultTargets = ["Towers"]
+
+[leanOptions]
+pp.unicode.fun = true # pretty-prints `fun a ↦ b`
+relaxedAutoImplicit = false
+weak.linter.mathlibStandardSet = true
+maxSynthPendingDepth = 3
+weak.linter.style.header = false
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.30.0"
+
+[[lean_lib]]
+name = "Towers"
+
+[[lean_lib]]
+name = "ChallengeDeps"
+
+[[lean_lib]]
+name = "Submission"
