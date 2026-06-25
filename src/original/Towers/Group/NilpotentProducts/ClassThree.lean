@@ -1,5 +1,0 @@
-import Towers.Group.NilpotentProducts.CommutatorIdentities
-import Towers.Group.NilpotentProducts.ClassThreeCyclic
-import Towers.Group.NilpotentProducts.FreeTruncationCollection
-import Towers.Group.NilpotentProducts.GeneralCollection
-import Towers.Group.NilpotentProducts.NaturalPowerCollection

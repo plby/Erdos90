@@ -1,8 +1,8 @@
-import Towers.Algebra.All
-import Towers.CantEick.All
-import Towers.ClassField.All
-import Towers.FieldTheory.All
-import Towers.Geometry.All
-import Towers.Group.All
-import Towers.NumberTheory
-import Towers.Topology.All
+import Submission.Algebra.All
+import Submission.CantEick.All
+import Submission.ClassField.All
+import Submission.FieldTheory.All
+import Submission.Geometry.All
+import Submission.Group.All
+import Submission.NumberTheory
+import Submission.Topology.All

@@ -1,5 +1,5 @@
 import ChallengeDeps
-import Towers.Geometry.Counterexamples.UnitDistance
+import Submission.Geometry.Counterexamples.UnitDistance
 
 open LeanEval.Combinatorics
 
@@ -40,9 +40,9 @@ private lemma map_offDiag (P : Finset ℂ) :
 
 private lemma unitDist_map (P : Finset ℂ) :
     unitDist (P.map complexToPlane.toEquiv.toEmbedding) =
-      Towers.distancePairsCount P := by
+      Submission.distancePairsCount P := by
   classical
-  unfold unitDist Towers.distancePairsCount
+  unfold unitDist Submission.distancePairsCount
   rw [map_offDiag, Finset.filter_map, Finset.card_map]
   congr 2
   ext q
@@ -56,7 +56,7 @@ theorem erdos_conjecture_false :
         N ≤ n ∧ P.card = n ∧ (n : ℝ) ^ (1 + δ) ≤ (unitDist P : ℝ) := by
   classical
   obtain ⟨ε, hε, c, hc, P, hP, hLower⟩ :=
-    Towers.main_theorem
+    Submission.main_theorem
   let δ : ℝ := ε / 2
   have hδ : 0 < δ := by
     dsimp [δ]

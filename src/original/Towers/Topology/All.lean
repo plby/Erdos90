@@ -1,5 +1,0 @@
-import Towers.Topology.ClosedSeparation
-import Towers.Topology.CompactTotallyDisconnected
-import Towers.Topology.LightweightTopology
-import Towers.Topology.OpenNormal
-import Towers.Topology.ProfiniteQuotients

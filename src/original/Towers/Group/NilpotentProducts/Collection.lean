@@ -1,5 +1,0 @@
-import Towers.Group.NilpotentProducts.CoefficientCombinatorics
-import Towers.Group.NilpotentProducts.HallPetrescoPowers
-import Towers.Group.NilpotentProducts.MultiplicationCoordinates
-import Towers.Group.NilpotentProducts.ReplacementRelations
-import Towers.Group.NilpotentProducts.TwoSidedWords

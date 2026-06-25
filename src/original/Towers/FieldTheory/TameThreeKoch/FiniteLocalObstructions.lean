@@ -1,1 +1,0 @@
-import Towers.FieldTheory.TameThreeKoch.LocalObstructionsVanish
