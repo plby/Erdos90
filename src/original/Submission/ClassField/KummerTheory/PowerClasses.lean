@@ -57,9 +57,9 @@ theorem power_class_mul
     powerClass n a = powerClass n b ^ r := by
   rw [h, map_mul, map_pow]
   have hc : powerClass n (c ^ n) = 1 := by
-    apply (QuotientGroup.eq_one_iff _).2
-    exact ⟨c, rfl⟩
-  rw [hc, mul_one]
+    simpa [map_pow] using power_class_pow n (powerClass n c)
+  rw [hc]
+  exact mul_one (powerClass n b ^ r)
 
 /-- The directly formalized implication in Proposition A.2: representatives
 related by a coprime power and an `n`th power generate the same subgroup of

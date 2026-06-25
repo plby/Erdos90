@@ -101,10 +101,14 @@ theorem rational_double_dual
     (χ : CharacterModule (Additive G)) :
     χ (rationalDoubleDual G η) = η χ := by
   let e := rationalCharacterHom G
-  let E :=
+  let E :
+      Multiplicative
+          (CharacterModule (CharacterModule (Additive G))) ≃*
+        ((G →* (Multiplicative LocalInvariant)ˣ) →*
+          (Multiplicative LocalInvariant)ˣ) :=
     (rationalCharacterHom
         (Multiplicative (CharacterModule (Additive G)))).trans
-      e.monoidHomCongrLeft
+      (e.monoidHomCongrLeft (N := (Multiplicative LocalInvariant)ˣ))
   have h := CommGroup.apply_monoidHomMonoidHomEquiv
     (G := G) (M := Multiplicative LocalInvariant)
     (e (Multiplicative.ofAdd χ))

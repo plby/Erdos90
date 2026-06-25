@@ -1949,11 +1949,19 @@ theorem evaluation_injective
   letI :
       FiniteDimensional K (AssociativeHomogeneousWords K α n) :=
     (associativeHomogeneousWords K α n).finiteDimensional_of_finite
-  exact
-    (LinearMap.injective_iff_surjective_of_finrank_eq_finrank
-      (input.finrank_eq K n)).mpr
-        (standard_sequence_surjective
-          (α := α) K n)
+  have hiff :
+      Function.Injective
+          (orderedStandardSequence (α := α) K n) ↔
+        Function.Surjective
+          (orderedStandardSequence (α := α) K n) :=
+    LinearMap.injective_iff_surjective_of_finrank_eq_finrank
+      (K := K)
+      (V := orderedSequenceSubmodule (α := α) K n)
+      (V₂ := AssociativeHomogeneousWords K α n)
+      (input.finrank_eq K n)
+  exact hiff.mpr
+    (standard_sequence_surjective
+      (α := α) K n)
 
 end PCInput
 
@@ -2087,6 +2095,7 @@ theorem
     indexedTreeSingleton,
     hallSequenceLinear]
 
+set_option maxHeartbeats 800000 in
 /-- PBW uniqueness implies polynomial independence of indexed Hall basic trees. -/
 theorem HPUniq.indexe_treea_polyl
     (R : Type*) [CommRing R]
@@ -2095,14 +2104,42 @@ theorem HPUniq.indexe_treea_polyl
     LinearIndependent R
       (fun i : BasicIndex (α := α) r =>
         (indexedBasicTree i).associativeWordPolynomial R) := by
-  have hcoordinates :=
+  let coord :
+      BasicIndex (α := α) r →
+        orderedStandardSubmodule (α := α) R :=
+    fun i => indexedTreeSingleton R i
+  let poly :
+      BasicIndex (α := α) r →
+        AssociativeWordPolynomial R α :=
+    fun i => (indexedBasicTree i).associativeWordPolynomial R
+  change LinearIndependent R poly
+  have hcoordinates : LinearIndependent R coord :=
     indexed_singleton_independent
       (α := α) R (r := r)
-  have hevaluated :=
-    hcoordinates.map'
-      (standardSequenceLinear (α := α) R)
-      (LinearMap.ker_eq_bot_of_injective P.eval_injective)
-  simpa [Function.comp_def] using hevaluated
+  have hmap (l : BasicIndex (α := α) r →₀ R) :
+      standardSequenceLinear (α := α) R
+          (Finsupp.linearCombination R coord l) =
+        Finsupp.linearCombination R poly l := by
+    rw [Finsupp.apply_linearCombination]
+    rw [Finsupp.linearCombination_apply,
+      Finsupp.linearCombination_apply]
+    apply Finsupp.sum_congr
+    intro i coefficient
+    change
+      l i • standardSequenceLinear (α := α) R (coord i) =
+        l i • poly i
+    rw [show
+      standardSequenceLinear (α := α) R (coord i) =
+        poly i from indexed_tree_singleton (α := α) R i]
+  rw [linearIndependent_iffₛ]
+  intro l₁ l₂ hl
+  have hcoord :
+      Finsupp.linearCombination R coord l₁ =
+        Finsupp.linearCombination R coord l₂ := by
+    apply P.eval_injective
+    rw [hmap l₁, hmap l₂]
+    exact hl
+  exact hcoordinates hcoord
 
 /--
 PBW uniqueness implies homogeneous polynomial independence in the exact form

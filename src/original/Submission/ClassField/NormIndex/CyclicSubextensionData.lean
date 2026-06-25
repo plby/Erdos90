@@ -1,4 +1,6 @@
 import Mathlib.GroupTheory.Solvable
+import Mathlib.Topology.Algebra.Group.Basic
+import Mathlib.Topology.Algebra.RestrictedProduct.TopologicalSpace
 import Submission.ClassField.IdeleCohomology.FinitenessStatement
 import Submission.ClassField.NormIndex.HerbrandCardinalityBound
 
@@ -31,6 +33,15 @@ universe u
 
 private abbrev IK (K : Type u) [Field K] [NumberField K] :=
   IdeleGroup (NumberField.RingOfIntegers K) K
+
+private theorem ideleUnitSubgroups_open
+    (K : Type u) [Field K] [NumberField K]
+    (v : HeightOneSpectrum (NumberField.RingOfIntegers K)) :
+    IsOpen (IdeleUnitSubgroups (NumberField.RingOfIntegers K) K v :
+      Set (v.adicCompletion K)ˣ) := by
+  apply Submonoid.isOpen_units
+  change IsOpen (v.adicCompletionIntegers K : Set (v.adicCompletion K))
+  exact Valued.isOpen_valuationSubring _
 
 /-- A nontrivial cyclic intermediate extension `E/K` inside `L/K`.
 
@@ -151,6 +162,10 @@ theorem subextension_previous_results
   have hsmall_le_H :
       principalIdeles (NumberField.RingOfIntegers K) K ⊔ D ≤ H := by
     exact sup_le_sup le_rfl (hD.trans hnormLE)
+  haveI : Fact (∀ v : HeightOneSpectrum (NumberField.RingOfIntegers K),
+      IsOpen (IdeleUnitSubgroups (NumberField.RingOfIntegers K) K v :
+        Set (v.adicCompletion K)ˣ)) :=
+    ⟨fun v ↦ ideleUnitSubgroups_open K v⟩
   have hHdense : Dense (H : Set (IK K)) :=
     hdense.mono hsmall_le_H
   have hnormOpen : IsOpen

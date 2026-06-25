@@ -974,6 +974,7 @@ lemma nonzero_coord_below
 /-- In the truncated normal form modulo `D_(n+1)`, a nontrivial element of `D_n` has a nonzero
 normal-form exponent of exactly weight `n`. -/
 lemma coord_d_ne
+    (n : ℕ)
     (O : OZReps (p := p) Q (n + 1))
     (hbot : zassenhausFiltration p Q (n + 1) = ⊥)
     {q : Q}
@@ -998,6 +999,7 @@ lemma coord_d_ne
 
 /-- Singleton-exponent version of `coord_d_ne`. -/
 lemma single_exp_d
+    (n : ℕ)
     (O : OZReps (p := p) Q (n + 1))
     (hbot : zassenhausFiltration p Q (n + 1) = ⊥)
     {q : Q}
@@ -1009,7 +1011,7 @@ lemma single_exp_d
           a = jenningsExpFin (p := p) i ∧
             O.wordEquiv.symm q i ≠ 0 := by
   classical
-  rcases O.coord_d_ne hbot hqD hq with
+  rcases coord_d_ne (p := p) (Q := Q) n O hbot hqD hq with
     ⟨i, hwi, hi_ne⟩
   refine ⟨jenningsExpFin (p := p) i, ?_, ⟨i, rfl, hi_ne⟩⟩
   simp [hwi]

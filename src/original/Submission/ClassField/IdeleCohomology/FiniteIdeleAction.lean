@@ -386,11 +386,15 @@ theorem ideles_action_coordinate
       Units.map (finitePlaceTransport (K := K) sigma P).toRingHom.toMonoidHom
         (x.1 (sigma⁻¹ • P)) := rfl
 
+set_option synthInstance.maxHeartbeats 200000 in
+-- Elaborating the finite restricted-product action unfolds transported
+-- completion instances.
 omit [FiniteDimensional K L] in
 theorem ideles_action_continuous (sigma : Gal(L/K)) :
     letI := finitePrimeAction (K := K) (L := L)
     letI := finiteIdelesAction (K := K) (L := L)
-    Continuous (fun x : FiniteIdeles (RingOfIntegers L) L ↦ sigma • x) := by
+    Continuous (fun x : FiniteIdeles (RingOfIntegers L) L ↦
+      (sigma • x : FiniteIdeles (RingOfIntegers L) L)) := by
   letI := finitePrimeAction (K := K) (L := L)
   letI := finiteCompletionAction (K := K) (L := L)
   letI := finiteIdelesAction (K := K) (L := L)
@@ -410,6 +414,12 @@ theorem ideles_action_continuous (sigma : Gal(L/K)) :
   change Continuous (RestrictedProduct.mapAlong
     (fun P : HeightOneSpectrum (RingOfIntegers L) ↦ (P.adicCompletion L)ˣ)
     (fun P : HeightOneSpectrum (RingOfIntegers L) ↦ (P.adicCompletion L)ˣ)
+    (A₁ := fun P ↦
+      (IdeleUnitSubgroup (RingOfIntegers L) L P :
+        Set ((P.adicCompletion L)ˣ)))
+    (A₂ := fun P ↦
+      (IdeleUnitSubgroup (RingOfIntegers L) L P :
+        Set ((P.adicCompletion L)ˣ)))
     f hf (fun P x ↦ phi P x) hphi)
   apply RestrictedProduct.mapAlong_continuous
   intro P

@@ -19,7 +19,7 @@ namespace Submission.CField.LBrauer
 noncomputable section
 
 
-open Polynomial
+open Polynomial IsLocalRing
 open scoped NormedField
 open scoped Valued
 
@@ -273,6 +273,20 @@ theorem frobenius_hensel_factor (n : ℕ) [NeZero n] :
   · simpa [A] using hfmap ▸ hg₀irred
   · simpa [A] using hfmap ▸ Algebra.IsSeparable.isSeparable k a
 
+private noncomputable def adjoinRootResidueEquiv
+    (A : Type u) [CommRing A] [IsLocalRing A]
+    (f : A[X]) [IsLocalRing (AdjoinRoot f)]
+    (hmax : maximalIdeal (AdjoinRoot f) =
+      (maximalIdeal A).map (AdjoinRoot.of f)) :
+    AdjoinRoot (f.map (residue A)) ≃+* ResidueField (AdjoinRoot f) := by
+  let p := maximalIdeal A
+  exact
+    (AdjoinRoot.quotEquivQuotMap f p).symm.toRingEquiv.trans
+      (Ideal.quotEquivOfEq hmax.symm)
+
+set_option synthInstance.maxHeartbeats 100000 in
+-- The quotient-residue comparison below unfolds transported local-ring instances.
+set_option maxHeartbeats 1000000 in
 /-- The residue field of the local algebra defined by the lifted factor has
 the same degree `n` as its fraction field. -/
 theorem residue_frobenius_factor
@@ -294,27 +308,28 @@ theorem residue_frobenius_factor
   let A := OK K
   let k := kK K
   have hfirr : Irreducible f :=
-    hfmonic.irreducible_of_irreducible_map (IsLocalRing.residue A) f hfred
+    hfmonic.irreducible_of_irreducible_map (residue (OK K)) f hfred
   letI : IsDomain (AdjoinRoot f) := AdjoinRoot.isDomain_of_prime hfirr.prime
   let hlocal : IsLocalRing (AdjoinRoot f) :=
     adjoin_ring_irreducible
-      A f hfmonic hfred
+      (OK K) f hfmonic hfred
   letI : IsLocalRing (AdjoinRoot f) := hlocal
-  have hmax : IsLocalRing.maximalIdeal (AdjoinRoot f) =
-      (IsLocalRing.maximalIdeal A).map (algebraMap A (AdjoinRoot f)) :=
+  let p : Ideal (OK K) := maximalIdeal (OK K)
+  have hmax : maximalIdeal (AdjoinRoot f) =
+      p.map (AdjoinRoot.of f) :=
     adjoin_irreducible_residue
-      A f hfmonic hfred
-  let hlocalHom : IsLocalHom (algebraMap A (AdjoinRoot f)) :=
-    ((IsLocalRing.local_hom_TFAE (algebraMap A (AdjoinRoot f))).out 2 0).mp (by
-      simpa using hmax.symm.le)
-  letI : IsLocalHom (algebraMap A (AdjoinRoot f)) := hlocalHom
-  let g : k[X] := f.map (IsLocalRing.residue A)
+      (OK K) f hfmonic hfred
+  let hlocalHom : IsLocalHom (algebraMap (OK K) (AdjoinRoot f)) :=
+    ((IsLocalRing.local_hom_TFAE
+      (algebraMap (OK K) (AdjoinRoot f))).out 2 0).mp (by
+      simpa [AdjoinRoot.algebraMap_eq] using hmax.symm.le)
+  letI : IsLocalHom (algebraMap (OK K) (AdjoinRoot f)) := hlocalHom
+  let g : k[X] := f.map (residue (OK K))
   let eRing : AdjoinRoot g ≃+*
       IsLocalRing.ResidueField (AdjoinRoot f) :=
-    (AdjoinRoot.quotEquivQuotMap f (IsLocalRing.maximalIdeal A)).symm.toRingEquiv.trans
-      (Ideal.quotEquivOfEq hmax.symm)
+    adjoinRootResidueEquiv (OK K) f hmax
   letI : Module.Finite k (AdjoinRoot g) :=
-    (hfmonic.map (IsLocalRing.residue A)).finite_adjoinRoot
+    (hfmonic.map (residue (OK K))).finite_adjoinRoot
   letI : Finite (AdjoinRoot g) := Module.finite_of_finite k
   letI : Finite (IsLocalRing.ResidueField (AdjoinRoot f)) :=
     Finite.of_equiv (AdjoinRoot g) eRing.toEquiv
@@ -332,10 +347,10 @@ theorem residue_frobenius_factor
       Module.finrank k (IsLocalRing.ResidueField (AdjoinRoot f)) :=
     Nat.pow_right_injective (Finite.one_lt_card (α := k)) hpowers
   refine ⟨hlocal, hlocalHom, ?_⟩
-  rw [← hfinrank, (AdjoinRoot.powerBasis'
-    (hfmonic.map (IsLocalRing.residue A))).finrank]
-  change (f.map (IsLocalRing.residue A)).natDegree = n
-  exact (hfmonic.natDegree_map (IsLocalRing.residue A)).trans hfdegree
+  rw [← hfinrank,
+    (AdjoinRoot.powerBasis' (hfmonic.map (residue (OK K)))).finrank]
+  change (f.map (residue (OK K))).natDegree = n
+  exact (hfmonic.natDegree_map (residue (OK K))).trans hfdegree
 
 /-- The full Frobenius polynomial splits in the fraction field defined by
 any degree-`n` Hensel factor with irreducible reduction. -/

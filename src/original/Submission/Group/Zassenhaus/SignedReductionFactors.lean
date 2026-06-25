@@ -477,6 +477,8 @@ theorem
 
 end CEWord
 
+universe u
+
 /--
 Semantic recollection data for the explicit atomic residual source.  A full
 Hall collector must compress this source into strictly heavier signed
@@ -595,6 +597,8 @@ theorem
   simp
 
 end CEWord
+
+universe u
 
 namespace
   TRRecoll
@@ -756,6 +760,8 @@ theorem
 
 end CEWord
 
+universe u
+
 namespace
   TRRecoll
 
@@ -891,6 +897,8 @@ theorem
 
 end CEWord
 
+universe u
+
 namespace
   TRRecoll
 
@@ -991,6 +999,8 @@ theorem
   simp
 
 end CEWord
+
+universe u
 
 namespace
   TRRecoll
@@ -1121,6 +1131,8 @@ theorem
 
 end CEWord
 
+universe u
+
 namespace
   TRRecoll
 
@@ -1243,6 +1255,8 @@ theorem
     SPFactor.wordValue, hword]
 
 end CEWord
+
+universe u
 
 namespace
   TRRecoll
@@ -2898,6 +2912,8 @@ theorem continuation_raw_series
           factor e)
 
 end CEWord
+
+universe u
 
 namespace TSFtry
 

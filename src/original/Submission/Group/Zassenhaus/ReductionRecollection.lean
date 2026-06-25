@@ -131,6 +131,8 @@ theorem
 
 end HEWord
 
+universe u
+
 namespace
   TSRecollb
 

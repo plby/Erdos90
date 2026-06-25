@@ -43,7 +43,9 @@ theorem adjoin_ring_irreducible
     letI : (Ideal.span ({f.map (Ideal.Quotient.mk p)} :
         Set (A ⧸ p)[X])).IsMaximal :=
       PrincipalIdealRing.isMaximal_of_irreducible hfred
-    exact Field.toIsField _
+    exact Field.toIsField
+      ((A ⧸ p)[X] ⧸ Ideal.span ({f.map (Ideal.Quotient.mk p)} :
+        Set (A ⧸ p)[X]))
   have hsource : IsField (S ⧸ I) :=
     (AdjoinRoot.quotEquivQuotMap f p).toRingEquiv.toMulEquiv.isField htarget
   have hImax : I.IsMaximal :=
@@ -78,7 +80,9 @@ theorem adjoin_irreducible_residue
       letI : (Ideal.span ({f.map (Ideal.Quotient.mk p)} :
           Set (A ⧸ p)[X])).IsMaximal :=
         PrincipalIdealRing.isMaximal_of_irreducible hfred
-      exact Field.toIsField _
+      exact Field.toIsField
+        ((A ⧸ p)[X] ⧸ Ideal.span ({f.map (Ideal.Quotient.mk p)} :
+          Set (A ⧸ p)[X]))
     have hsource : IsField
         (AdjoinRoot f ⧸ p.map (AdjoinRoot.of f)) :=
       (AdjoinRoot.quotEquivQuotMap f p).toRingEquiv.toMulEquiv.isField htarget

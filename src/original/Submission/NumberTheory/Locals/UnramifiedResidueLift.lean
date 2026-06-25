@@ -59,7 +59,9 @@ theorem adjoin_root_irreducible
     letI : (Ideal.span ({f.map (Ideal.Quotient.mk p)} :
         Set (A ⧸ p)[X])).IsMaximal :=
       PrincipalIdealRing.isMaximal_of_irreducible hfred
-    exact Field.toIsField _
+    exact Field.toIsField
+      ((A ⧸ p)[X] ⧸ Ideal.span ({f.map (Ideal.Quotient.mk p)} :
+        Set (A ⧸ p)[X]))
   have hsource : IsField (S ⧸ I) :=
     (AdjoinRoot.quotEquivQuotMap f p).toRingEquiv.toMulEquiv.isField htarget
   have hImax : I.IsMaximal :=
@@ -97,7 +99,9 @@ theorem adjoin_maximal_irreducible
       letI : (Ideal.span ({f.map (Ideal.Quotient.mk p)} :
           Set (A ⧸ p)[X])).IsMaximal :=
         PrincipalIdealRing.isMaximal_of_irreducible hfred
-      exact Field.toIsField _
+      exact Field.toIsField
+        ((A ⧸ p)[X] ⧸ Ideal.span ({f.map (Ideal.Quotient.mk p)} :
+          Set (A ⧸ p)[X]))
     have hsource : IsField
         (AdjoinRoot f ⧸ p.map (AdjoinRoot.of f)) :=
       (AdjoinRoot.quotEquivQuotMap f p).toRingEquiv.toMulEquiv.isField htarget
@@ -469,7 +473,7 @@ theorem field_adjoin_surjective
       obtain ⟨x, rfl⟩ := Ideal.Quotient.mk_surjective x
       rfl
   letI : IsScalarTower U (U ⧸ P) (ResidueField B) :=
-    IsScalarTower.of_algebraMap_eq' rfl
+    Ideal.Quotient.isScalarTower_of_liesOver U Q P
   change Function.Surjective (IsScalarTower.toAlgHom (ResidueField A)
     (U ⧸ P) (ResidueField B))
   rw [← AlgHom.range_eq_top]
@@ -532,7 +536,7 @@ theorem residue_adjoin_range
       obtain ⟨x, rfl⟩ := Ideal.Quotient.mk_surjective x
       rfl
   letI : IsScalarTower U (U ⧸ P) (ResidueField B) :=
-    IsScalarTower.of_algebraMap_eq' rfl
+    Ideal.Quotient.isScalarTower_of_liesOver U Q P
   let phi := IsScalarTower.toAlgHom (ResidueField A) (U ⧸ P)
     (ResidueField B)
   apply le_antisymm

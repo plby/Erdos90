@@ -50,7 +50,7 @@ private lemma unitDist_map (P : Finset ℂ) :
 
 open Filter
 
-theorem erdos_conjecture_false :
+theorem erdos_unit_distance_conjecture_false :
     ∃ δ : ℝ, 0 < δ ∧
       ∀ N : ℕ, ∃ (n : ℕ) (P : Finset (EuclideanSpace ℝ (Fin 2))),
         N ≤ n ∧ P.card = n ∧ (n : ℝ) ^ (1 + δ) ≤ (unitDist P : ℝ) := by
@@ -104,7 +104,5 @@ theorem erdos_conjecture_false :
         _ = c * ((P j).card : ℝ) ^ (1 + ε) := by rw [mul_assoc, hsplit]
     rw [unitDist_map]
     exact hAbsorb.trans (hLower j)
-
-#print axioms erdos_conjecture_false
 
 end Submission

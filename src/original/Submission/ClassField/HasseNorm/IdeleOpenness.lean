@@ -309,6 +309,10 @@ theorem idele_subgroup_open :
     IsOpen ((finiteIdeleNorm (K := K) (L := L)).range :
       Set (FiniteIdeles (OK K) K)) := by
   classical
+  haveI : Fact (∀ P : FinitePrime K,
+      IsOpen (IdeleUnitSubgroups (OK K) K P :
+        Set (P.adicCompletion K)ˣ)) :=
+    ⟨fun P ↦ idele_unit_open (K := K) P⟩
   let ramifiedIdeals : Set (Ideal (OK K)) :=
     {p | ∃ q : Ideal (OK L), q.IsPrime ∧ q ≠ ⊥ ∧
       q.under (OK K) = p ∧ Ideal.ramificationIdx p q ≠ 1}
@@ -632,6 +636,10 @@ theorem infinite_subgroup_open :
 for a finite extension of number fields is an open subgroup. -/
 theorem idele_norm_open :
     IdeleNormOpen (K := K) (L := L) := by
+  haveI : Fact (∀ P : FinitePrime K,
+      IsOpen (IdeleUnitSubgroups (OK K) K P :
+        Set (P.adicCompletion K)ˣ)) :=
+    ⟨fun P ↦ idele_unit_open (K := K) P⟩
   let H : Subgroup (IdeleGroup (OK K) K) :=
     ((infiniteIdeleNorm (K := K) (L := L)).range).prod
       ((finiteIdeleNorm (K := K) (L := L)).range)

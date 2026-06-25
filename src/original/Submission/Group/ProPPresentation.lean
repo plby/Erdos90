@@ -395,6 +395,8 @@ attribute [instance] FreeGroup.totallyDisconnected
 
 namespace FGBuild
 
+variable {p d : ℕ}
+
 theorem ContinuousHom.ext_topologi_generates
     {F H : Type u} [Group F] [TopologicalSpace F] [IsTopologicalGroup F]
     [Group H] [TopologicalSpace H] [IsTopologicalGroup H] [T2Space H]

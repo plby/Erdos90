@@ -1086,6 +1086,7 @@ theorem idele_monoid_principal (x : Kˣ) :
 set_option maxHeartbeats 3000000 in
 -- Galois invariance compares dependent coordinates over conjugate primes.
 set_option maxRecDepth 100000 in
+set_option synthInstance.maxHeartbeats 300000 in
 omit [FiniteDimensional K L] in
 /-- The finite coordinate extension is fixed by the concrete Galois action. -/
 theorem extension_monoid_fixed

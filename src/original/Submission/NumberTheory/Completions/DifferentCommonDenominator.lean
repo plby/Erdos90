@@ -151,6 +151,9 @@ noncomputable def adicFractionLocalization
   let e₀ : A ≃ₐ[C] (∀ Q, B Q) :=
     adicPiIntegers
       (K := K) (L := L) P hP
+  letI : Algebra (∀ Q, B Q) (∀ Q, E Q) :=
+    completionPiFractionAlgebra
+      (L := L) (P.asIdeal.map (algebraMap R S))
   letI : Algebra A (∀ Q, E Q) :=
     adicLocalizationAlgebra (K := K) (L := L) P hP
   refine AlgEquiv.ofRingEquiv
@@ -159,7 +162,9 @@ noncomputable def adicFractionLocalization
   intro x
   change adicFractionCompletions
       (L := L) P.asIdeal hP (algebraMap A (FractionRing A) x) =
-    algebraMap (∀ Q, B Q) (∀ Q, E Q) (e₀ x)
+    @algebraMap (∀ Q, B Q) (∀ Q, E Q) _ _
+      (completionPiFractionAlgebra
+        (L := L) (P.asIdeal.map (algebraMap R S))) (e₀ x)
   exact tensor_fraction_algebra
     (L := L) P.asIdeal hP x
 

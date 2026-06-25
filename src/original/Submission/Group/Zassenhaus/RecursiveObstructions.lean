@@ -774,6 +774,8 @@ namespace Submission
 namespace TCTex
 namespace RPDecomp
 
+universe u
+
 open HACoeff
 open FRObstr
 open RPPkt

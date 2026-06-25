@@ -71,8 +71,16 @@ noncomputable def adicFractionCompletions
         (factorHeightSpectrum J P).adicCompletionIntegers L)
       (∀ P : (UniqueFactorizationMonoid.factors J).toFinset,
         (factorHeightSpectrum J P).adicCompletion L) :=
-    fraction_ring_pi _ _
-  exact IsFractionRing.ringEquivOfRingEquiv e
+    fraction_ring_pi
+      (fun P : (UniqueFactorizationMonoid.factors J).toFinset =>
+        (factorHeightSpectrum J P).adicCompletionIntegers L)
+      (fun P : (UniqueFactorizationMonoid.factors J).toFinset =>
+        (factorHeightSpectrum J P).adicCompletion L)
+  exact IsFractionRing.ringEquivOfRingEquiv
+    (K := FractionRing (AdicCompletion I R ⊗[R] S))
+    (L := ∀ P : (UniqueFactorizationMonoid.factors J).toFinset,
+      (factorHeightSpectrum J P).adicCompletion L)
+    e
 
 end
 

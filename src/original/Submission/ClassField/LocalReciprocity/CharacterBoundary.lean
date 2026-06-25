@@ -14,6 +14,8 @@ namespace Submission.CField.LRecip
 open CategoryTheory Rep
 open Submission.CField.Shifting
 
+universe u
+
 noncomputable section
 
 /-- The integral lattice in `Q` used by Lemma II.3.3 is the additive
@@ -76,7 +78,7 @@ coefficient sequence `0 -> Z -> Q -> Q/Z -> 0`. -/
 noncomputable def characterBoundary
     (χ : RationalCharacter G) :
     groupCohomology (Rep.trivial ℤ G ℤ) 2 :=
-  (integersIso2 G).hom
+  (integersIso2 G).toLinearEquiv
     (characterRationalIntegers G χ)
 
 @[simp]
@@ -84,12 +86,16 @@ theorem characterBoundary_add
     (χ ψ : RationalCharacter G) :
     characterBoundary G (χ + ψ) =
       characterBoundary G χ + characterBoundary G ψ := by
-  simp only [characterBoundary, character_integers_add, map_add]
+  unfold characterBoundary
+  rw [character_integers_add]
+  exact (integersIso2 G).toLinearEquiv.map_add _ _
 
 @[simp]
 theorem characterBoundary_zero :
     characterBoundary G 0 = 0 := by
-  simp only [characterBoundary, character_rational_integers, map_zero]
+  unfold characterBoundary
+  rw [character_rational_integers]
+  exact (integersIso2 G).toLinearEquiv.map_zero
 
 end
 

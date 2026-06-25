@@ -79,7 +79,7 @@ structure TSNormal
     (H : ∀ r : ℕ, BCWta.{u} d r) :
     Prop where
   normalize :
-    ∀ source : List (SPFactor H ι),
+    ∀ {ι : Type} (source : List (SPFactor H ι)),
       SPFactor.IsTruncated n source →
       SPFactor.WordWeightLeast lowerWeight source →
         ∃ coordinates : CCRecipe H ι,
@@ -815,7 +815,8 @@ structure SSInsert
     (H : ∀ r : ℕ, BCWta.{u} d r) :
     Prop where
   insert :
-    ∀ (coordinates : CCRecipe H ι)
+    ∀ {ι : Type}
+      (coordinates : CCRecipe H ι)
       (factor : SPFactor H ι),
       coordinates.NTBelow lowerWeight →
       lowerWeight ≤ factor.word.weight HEAddres.weight →
@@ -1766,7 +1767,7 @@ structure SupportedInsertionBranch
     ∀ lowerWeight : ℕ,
       TSNormal
           (n := n) (lowerWeight := lowerWeight + 1) H →
-        ∀ (coordinates : CCRecipe H ι)
+        ∀ {ι : Type} (coordinates : CCRecipe H ι)
           (factor : SPFactor H ι),
           coordinates.NTBelow lowerWeight →
           factor.word.weight HEAddres.weight = lowerWeight →
@@ -2197,7 +2198,7 @@ def insertionBranch
         (n := n) H) :
     SupportedInsertionBranch
       (n := n) H where
-  insert lowerWeight normalizer coordinates factor hcoordinates hfactorWeight
+  insert lowerWeight normalizer {_ι} coordinates factor hcoordinates hfactorWeight
       hfactorTruncated :=
     (factory.resolve lowerWeight coordinates factor hcoordinates hfactorWeight
       hfactorTruncated).exists_insertion normalizer hfactorWeight
@@ -2307,7 +2308,7 @@ def insertionBranch
         (n := n) H) :
     SupportedInsertionBranch
       (n := n) H where
-  insert lowerWeight normalizer coordinates factor hcoordinates hfactorWeight
+  insert lowerWeight normalizer {_ι} coordinates factor hcoordinates hfactorWeight
       hfactorTruncated :=
     ((schedule.route lowerWeight normalizer coordinates factor hcoordinates
       hfactorWeight hfactorTruncated).activeLayerResolution
@@ -3160,7 +3161,7 @@ def insertionBranch
         (n := n) H) :
     SupportedInsertionBranch
       (n := n) H where
-  insert lowerWeight normalizer coordinates factor hcoordinates hfactorWeight
+  insert lowerWeight normalizer {_ι} coordinates factor hcoordinates hfactorWeight
       hfactorTruncated := by
     let blockRoute :=
       blockSchedule.route lowerWeight normalizer coordinates factor
@@ -6713,7 +6714,7 @@ noncomputable def insertionBranch
         (n := n) H) :
     SupportedInsertionBranch
       (n := n) H where
-  insert lowerWeight normalizer coordinates factor hcoordinates hfactorWeight
+  insert lowerWeight normalizer {_ι} coordinates factor hcoordinates hfactorWeight
       hfactorTruncated := by
     let factorTail :=
       factorSchedule.expand lowerWeight normalizer factor hfactorWeight

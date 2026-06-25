@@ -144,6 +144,8 @@ namespace TCTex
 namespace ITSched
 namespace PPScheda
 
+universe u
+
 open scoped commutatorElement
 
 open HACoeff
@@ -300,7 +302,9 @@ lemma recipes_all_packet
     {d n : ℕ}
     (packet : USPkt kernel recipes d n) :
     packet.truncatedAll.recipes = recipes :=
-  rfl
+  by
+    change (URNorm.truncatedNaturalPacket packet.uniform d n).recipes = recipes
+    rfl
 
 /-- Attach the fixed signed schedule packet to two arbitrary symbolic Hall
 parents. -/
@@ -395,8 +399,10 @@ lemma satisfies_recipe_uniform
     (packet :
       USPkt.{u}
         kernel (canonicalRecipes n 1 1) d n) :
-    SatisfiesRecipeTruncated.{u} d n :=
-  packet.truncatedAll.listEval_eq
+    SatisfiesRecipeTruncated.{u} d n := by
+  intro left right leftExponent rightExponent
+  simpa [USPkt.recipes_all_packet packet] using
+    packet.truncatedAll.listEval_eq left right leftExponent rightExponent
 
 /--
 The same canonical uniform signed schedule packet proves the fixed-truncation
@@ -633,9 +639,9 @@ uniform signed inverse-trace packet in any truncation.
 theorem not_uniform_recipes
     (kernel : PPScheda)
     (d n : ℕ) :
-    ¬ USPkt.{u}
-      kernel (canonicalRecipes 3 1 1) d n := by
-  intro packet
+    ¬ Nonempty (USPkt.{u}
+      kernel (canonicalRecipes 3 1 1) d n) := by
+  rintro ⟨packet⟩
   exact
     uniform_normalization_recipes
       kernel packet.uniform

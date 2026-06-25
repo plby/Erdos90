@@ -161,10 +161,13 @@ theorem idele_ideal_principal (x : Kˣ) :
   rw [normalized_adic_singleton]
   simp only [coe_toPrincipalIdeal]
 
+set_option synthInstance.maxHeartbeats 200000 in
 private theorem adic_maximal_pow
     (P : HeightOneSpectrum (OK K)) (n : ℕ)
     (z : P.adicCompletionIntegers K) (hz : z ≠ 0) :
-    z ∈ IsLocalRing.maximalIdeal (P.adicCompletionIntegers K) ^ n ↔
+    z ∈
+      (IsLocalRing.maximalIdeal (P.adicCompletionIntegers K) :
+        Ideal (P.adicCompletionIntegers K)) ^ n ↔
       (n : ℤ) ≤ -WithZero.log
         (Valued.v (z : P.adicCompletion K)) := by
   let C := P.adicCompletion K
@@ -175,7 +178,7 @@ private theorem adic_maximal_pow
     change IsDiscreteValuationRing A
     infer_instance
   have hpow :
-      (((IsLocalRing.maximalIdeal A) ^ n : Ideal A) : Set A) =
+      ((((IsLocalRing.maximalIdeal A : Ideal A) ^ n : Ideal A)) : Set A) =
         {y : A | v (y : C) ≤ v (pi : C) ^ n} := by
     simpa only [A, C, v, HeightOneSpectrum.adicCompletionIntegers] using
       hpi.maximalIdeal_pow_eq_setOf_le_v_coe_pow (v := v) n
@@ -195,7 +198,7 @@ private theorem adic_maximal_pow
     exact Subtype.val_injective.ne hz
   have hpival : v (pi : C) ^ n ≠ 0 := by
     exact pow_ne_zero n hpiUniform.val_ne_zero
-  have hmem : z ∈ IsLocalRing.maximalIdeal A ^ n ↔
+  have hmem : z ∈ (IsLocalRing.maximalIdeal A : Ideal A) ^ n ↔
       v (z : C) ≤ v (pi : C) ^ n := by
     exact Set.ext_iff.mp hpow z
   rw [hmem]

@@ -540,7 +540,7 @@ noncomputable instance module_free_presented
     {p d r : ℕ} [Fact p.Prime]
     (rels : Fin r → FreeGroup (Fin d)) (n : ℕ) :
     Module.Free (ZMod p) (pALayer (p := p) rels n) := by
-  infer_instance
+  exact Module.Free.of_divisionRing (ZMod p) (pALayer (p := p) rels n)
 
 /--
 The named layer has exactly the Hilbert-sequence dimension.

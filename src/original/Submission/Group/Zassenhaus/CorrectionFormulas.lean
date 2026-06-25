@@ -15,6 +15,8 @@ The file is intentionally not imported by the existing collection proof.
 namespace Submission
 namespace TCTex
 
+universe u
+
 namespace BRTerm
 
 /-- Reuse one weighted recipe term at any larger target weight. -/

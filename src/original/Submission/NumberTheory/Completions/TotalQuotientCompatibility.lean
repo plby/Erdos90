@@ -35,6 +35,29 @@ theorem fraction_algebra_flat
   rw [IsLocalization.lift_eq]
   rfl
 
+@[reducible] noncomputable def completionPiFractionAlgebra
+    (J : Ideal S) :
+    Algebra
+      (∀ P : (UniqueFactorizationMonoid.factors J).toFinset,
+        (factorHeightSpectrum J P).adicCompletionIntegers L)
+      (∀ P : (UniqueFactorizationMonoid.factors J).toFinset,
+        (factorHeightSpectrum J P).adicCompletion L) := by
+  let A : Type u :=
+    ∀ P : (UniqueFactorizationMonoid.factors J).toFinset,
+      (factorHeightSpectrum J P).adicCompletionIntegers L
+  let F : (UniqueFactorizationMonoid.factors J).toFinset → Type u :=
+    fun P => (factorHeightSpectrum J P).adicCompletion L
+  letI (P : (UniqueFactorizationMonoid.factors J).toFinset) :
+      Algebra A (F P) :=
+    ((algebraMap
+      ((factorHeightSpectrum J P).adicCompletionIntegers L)
+      ((factorHeightSpectrum J P).adicCompletion L)).comp
+      (Pi.evalRingHom
+        (fun P : (UniqueFactorizationMonoid.factors J).toFinset =>
+          (factorHeightSpectrum J P).adicCompletionIntegers L) P)).toAlgebra
+  change Algebra A ((P : (UniqueFactorizationMonoid.factors J).toFinset) → F P)
+  exact Pi.algebra _ _
+
 set_option synthInstance.maxHeartbeats 100000 in
 -- The product fraction-ring instance has dependent valuation-ring factors.
 set_option maxHeartbeats 1000000 in
@@ -49,7 +72,7 @@ theorem tensor_fraction_algebra
         (L := L) I hI
         (algebraMap (AdicCompletion I R ⊗[R] S)
           (FractionRing (AdicCompletion I R ⊗[R] S)) x) =
-      algebraMap
+      @algebraMap
         (∀ P : (UniqueFactorizationMonoid.factors
           (I.map (algebraMap R S))).toFinset,
           (factorHeightSpectrum
@@ -58,6 +81,9 @@ theorem tensor_fraction_algebra
           (I.map (algebraMap R S))).toFinset,
           (factorHeightSpectrum
             (I.map (algebraMap R S)) P).adicCompletion L)
+        _ _
+        (completionPiFractionAlgebra
+          (L := L) (I.map (algebraMap R S)))
         ((completionPiIntegers (K := L)
           (I.map (algebraMap R S)) hI)
           (adicTensorRing I x)) := by
@@ -67,6 +93,12 @@ theorem tensor_fraction_algebra
         (factorHeightSpectrum J P).adicCompletionIntegers L) :=
     (adicTensorRing I).toRingEquiv.trans
       (completionPiIntegers (K := L) J hI)
+  letI : Algebra
+      (∀ P : (UniqueFactorizationMonoid.factors J).toFinset,
+        (factorHeightSpectrum J P).adicCompletionIntegers L)
+      (∀ P : (UniqueFactorizationMonoid.factors J).toFinset,
+        (factorHeightSpectrum J P).adicCompletion L) :=
+    completionPiFractionAlgebra (L := L) J
   letI : IsFractionRing
       (∀ P : (UniqueFactorizationMonoid.factors J).toFinset,
         (factorHeightSpectrum J P).adicCompletionIntegers L)

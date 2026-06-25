@@ -41,6 +41,15 @@ private abbrev OK (K : Type u) [Field K] [NumberField K] :=
 private abbrev IK (K : Type u) [Field K] [NumberField K] :=
   IdeleGroup (OK K) K
 
+private theorem ideleUnitSubgroups_open
+    (K : Type u) [Field K] [NumberField K]
+    (v : HeightOneSpectrum (OK K)) :
+    IsOpen (IdeleUnitSubgroups (OK K) K v :
+      Set (v.adicCompletion K)ˣ) := by
+  apply Submonoid.isOpen_units
+  change IsOpen (v.adicCompletionIntegers K : Set (v.adicCompletion K))
+  exact Valued.isOpen_valuationSubring _
+
 /-- The finite family of coordinates retained when quotienting by
 `IdelesAwayFrom K S`: the primes in `S` and every archimedean place. -/
 private abbrev PlaceIndex
@@ -476,6 +485,10 @@ theorem coordinate_open
     (K : Type u) [Field K] [NumberField K]
     (S : Finset (HeightOneSpectrum (OK K))) :
     IsOpenMap (coordinateMap K S) := by
+  haveI : Fact (∀ v : HeightOneSpectrum (OK K),
+      IsOpen (IdeleUnitSubgroups (OK K) K v :
+        Set (v.adicCompletion K)ˣ)) :=
+    ⟨fun v ↦ ideleUnitSubgroups_open K v⟩
   apply IsOpenMap.of_sections
   intro x
   let sectionAt : LocalUnits K S → IK K := fun y ↦

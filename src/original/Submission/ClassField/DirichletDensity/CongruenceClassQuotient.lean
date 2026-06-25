@@ -4,6 +4,7 @@ import Submission.ClassField.DirichletDensity.CharacterOrthogonality
 import Submission.ClassField.DirichletDensity.DirichletDensity
 import Submission.ClassField.DirichletDensity.PartialEulerProduct
 import Submission.ClassField.IdeleCohomology.NormInvariants
+import Mathlib.RingTheory.RootsOfUnity.Complex
 
 /-!
 # Chapter VI, Section 4, Theorem 4.8
@@ -286,6 +287,11 @@ lemma sum_congruence_characters
     {G : Type*} [CommGroup G] [Finite G] [Fintype (G →* ℂˣ)] (a : G) :
     ∑ chi : G →* ℂˣ, (chi a : ℂ) =
       if a = 1 then (Nat.card G : ℂ) else 0 := by
+  letI : NeZero (Monoid.exponent G) :=
+    ⟨Monoid.ExponentExists.exponent_ne_zero
+      (Monoid.ExponentExists.of_finite (G := G))⟩
+  letI : HasEnoughRootsOfUnity ℂ (Monoid.exponent G) :=
+    HasEnoughRootsOfUnity.of_card_le (R := ℂ) (by rw [Complex.card_rootsOfUnity])
   let e := (CommGroup.monoidHom_mulEquiv_of_hasEnoughRootsOfUnity G ℂ).some
   letI : Finite (G →* ℂˣ) := Finite.of_equiv G e.symm.toEquiv
   classical
@@ -314,8 +320,15 @@ lemma congruence_characters_index
     (H : Subgroup (IdealsPrimeTo (NumberField.RingOfIntegers K) K m.finiteSupport))
     [Finite (CongruenceClassQuotient K m H)] :
     Nat.card (CongruenceClassQuotient K m H →* ℂˣ) = H.index := by
-  rw [CommGroup.card_monoidHom_of_hasEnoughRootsOfUnity,
-    H.index_eq_card]
+  let G := CongruenceClassQuotient K m H
+  letI : NeZero (Monoid.exponent G) :=
+    ⟨Monoid.ExponentExists.exponent_ne_zero
+      (Monoid.ExponentExists.of_finite (G := G))⟩
+  letI : HasEnoughRootsOfUnity ℂ (Monoid.exponent G) :=
+    HasEnoughRootsOfUnity.of_card_le (R := ℂ) (by rw [Complex.card_rootsOfUnity])
+  have hcard : Nat.card (G →* ℂˣ) = Nat.card G :=
+    CommGroup.card_monoidHom_of_hasEnoughRootsOfUnity G ℂ
+  simpa [G, H.index_eq_card] using hcard
 
 /-- The exact pointwise orthogonality formula used before exchanging the
 finite character sum with the prime series. -/
@@ -328,8 +341,11 @@ lemma congruence_character_orthogonality
     (a : CongruenceClassQuotient K m H) :
     ∑ chi : CongruenceClassQuotient K m H →* ℂˣ, (chi a : ℂ) =
       if a = 1 then (H.index : ℂ) else 0 := by
-  rw [sum_congruence_characters]
-  congr 2
+  let G := CongruenceClassQuotient K m H
+  have hsum := sum_congruence_characters (G := G) a
+  have hcard : Nat.card G = H.index := by
+    simp [G, H.index_eq_card]
+  simpa [G, hcard] using hsum
 
 /-- The analytic bridges, character orthogonality, and nonnegativity of
 Dirichlet density imply the full dichotomy in Theorem 4.8. -/
@@ -356,6 +372,11 @@ theorem congruence_analytic_bridges
   intro K _ _ m H hH
   let G := CongruenceClassQuotient K m H
   letI : Finite G := hfinite K m H hH
+  letI : NeZero (Monoid.exponent G) :=
+    ⟨Monoid.ExponentExists.exponent_ne_zero
+      (Monoid.ExponentExists.of_finite (G := G))⟩
+  letI : HasEnoughRootsOfUnity ℂ (Monoid.exponent G) :=
+    HasEnoughRootsOfUnity.of_card_le (R := ℂ) (by rw [Complex.card_rootsOfUnity])
   let dualEquiv :=
     (CommGroup.monoidHom_mulEquiv_of_hasEnoughRootsOfUnity G ℂ).some
   letI : Finite (G →* ℂˣ) := Finite.of_equiv G dualEquiv.symm.toEquiv

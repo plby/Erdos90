@@ -204,8 +204,11 @@ section CanonicalValuation
 
 open Submission.CField.LFTheory
 
+universe u
+
 variable (K : Type u) [NontriviallyNormedField K] [IsUltrametricDist K]
 
+set_option maxHeartbeats 1000000 in
 /-- **Theorem I.1.13 (statement).** Assuming local existence, there is at
 most one homomorphism satisfying conditions (a) and (b) of the Local
 Recip Law.  The valuative relation is the one canonically induced by

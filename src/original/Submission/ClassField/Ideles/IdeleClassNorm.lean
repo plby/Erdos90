@@ -107,13 +107,19 @@ private noncomputable def scalarAlgPi
       (K := K) (L := L) P hP
   letI : Algebra A (∀ Q, E Q) :=
     piLocalizationTarget B E e0
+  letI : SMul C A :=
+    (show Algebra C A from inferInstance).toSMul
+  letI : SMul A (∀ Q, E Q) :=
+    (show Algebra A (∀ Q, E Q) from inferInstance).toSMul
+  letI : SMul C (∀ Q, E Q) :=
+    (show Algebra C (∀ Q, E Q) from inferInstance).toSMul
   letI : IsScalarTower C A (∀ Q, E Q) := by
     apply IsScalarTower.of_algebraMap_eq'
     ext c Q
     change algebraMap C (E Q) c =
       algebraMap (B Q) (E Q) (e0 (algebraMap C A c) Q)
     rw [e0.commutes]
-    rfl
+    exact (IsScalarTower.algebraMap_apply C (B Q) (E Q) c).symm
   letI : IsScalarTower C F (∀ Q, E Q) := inferInstance
   letI : IsLocalization
       (Algebra.algebraMapSubmonoid A C⁰) (∀ Q, E Q) :=
@@ -223,6 +229,12 @@ private theorem scalar_pi_tmul
       (K := K) (L := L) P hP
   letI : Algebra A (∀ Q, E Q) :=
     piLocalizationTarget B E e₀
+  letI : SMul C A :=
+    (show Algebra C A from inferInstance).toSMul
+  letI : SMul A (∀ Q, E Q) :=
+    (show Algebra A (∀ Q, E Q) from inferInstance).toSMul
+  letI : SMul C (∀ Q, E Q) :=
+    (show Algebra C (∀ Q, E Q) from inferInstance).toSMul
   letI : IsScalarTower C A (∀ Q, E Q) := by
     apply IsScalarTower.of_algebraMap_eq'
     ext c Q
@@ -234,16 +246,17 @@ private theorem scalar_pi_tmul
   letI : IsLocalization
       (Algebra.algebraMapSubmonoid A C⁰) (∀ Q, E Q) :=
     localization_pi_alg B E e₀
-  letI : Algebra L (∀ Q, E Q) := Pi.algebra _ _
+  letI : Algebra L (∀ Q : ι, E Q) := Pi.algebra ι E
   change scalarFractionTensor
       (R := R) (S := S) (K := K) (L := L)
       (C := C) (F := F) (Q := ∀ Q, E Q)
-      ((1 : F) ⊗ₜ[K] x) = algebraMap L (∀ Q, E Q) x
+      ((1 : F) ⊗ₜ[K] x) =
+        fun Q : ι => algebraMap L (E Q) x
   apply scalar_tmul_integers
   intro s
   rw [scalar_fraction_tmul]
-  simp only [map_one, one_mul]
   ext Q
+  simp only [map_one, Pi.mul_apply, Pi.one_apply, one_mul, Pi.algebraMap_apply]
   change algebraMap (B Q) (E Q) (e₀ ((1 : C) ⊗ₜ[R] s) Q) =
     algebraMap L (E Q) (algebraMap S L s)
   rw [pi_different_tmul]

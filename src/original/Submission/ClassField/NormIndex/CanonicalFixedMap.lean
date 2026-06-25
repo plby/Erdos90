@@ -281,7 +281,7 @@ theorem canonical_fixed_lifting
           (principalIdele (NumberField.RingOfIntegers L) L b) = _
       simpa using D.smul_principalIdele sigma b
     rw [hsp, hσb, map_mul, hσx]
-    simp only [div_eq_mul_inv, mul_inv_rev]
+    simp only [div_eq_mul_inv]
     calc
       (principalIdele (NumberField.RingOfIntegers L) L (f sigma) * x) *
           ((principalIdele (NumberField.RingOfIntegers L) L b)⁻¹ *

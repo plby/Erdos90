@@ -15,6 +15,8 @@ The file is intentionally not imported by the existing collection proof.
 namespace Submission
 namespace TCTex
 
+universe u
+
 namespace BRTerm
 
 /-- Scale the integer coefficient of one repeated-block recipe term. -/

@@ -39,20 +39,26 @@ abbrev IdeleUnitSubgroup (v : HeightOneSpectrum R) :
     Subgroup (v.adicCompletion K)ˣ :=
   (Submonoid.ofClass (v.adicCompletionIntegers K)).units
 
+abbrev IdeleUnitSubgroups :
+    (v : HeightOneSpectrum R) → Subgroup (v.adicCompletion K)ˣ :=
+  fun v => IdeleUnitSubgroup R K v
+
 /-- The finite idele group, with its restricted-product topology. -/
-def FiniteIdeles : Type _ :=
+abbrev FiniteIdeles : Type _ :=
   Πʳ v : HeightOneSpectrum R,
-    [(v.adicCompletion K)ˣ, IdeleUnitSubgroup R K v]
+    [(v.adicCompletion K)ˣ, IdeleUnitSubgroups R K v]
 
-instance : CommGroup (FiniteIdeles R K) := inferInstanceAs <|
-  CommGroup <|
-    Πʳ v : HeightOneSpectrum R,
-      [(v.adicCompletion K)ˣ, IdeleUnitSubgroup R K v]
-
-instance : TopologicalSpace (FiniteIdeles R K) := inferInstanceAs <|
-  TopologicalSpace <|
-    Πʳ v : HeightOneSpectrum R,
-      [(v.adicCompletion K)ˣ, IdeleUnitSubgroup R K v]
+instance : CommGroup (FiniteIdeles R K) := by
+  let B : (v : HeightOneSpectrum R) → Subgroup (v.adicCompletion K)ˣ :=
+    IdeleUnitSubgroups R K
+  letI : ∀ v : HeightOneSpectrum R, CommGroup (v.adicCompletion K)ˣ :=
+    fun _ => inferInstance
+  letI : CommGroup ((v : HeightOneSpectrum R) → (v.adicCompletion K)ˣ) :=
+    Pi.commGroup
+  change CommGroup <|
+    Πʳ v : HeightOneSpectrum R, [(v.adicCompletion K)ˣ, B v]
+  exact DFunLike.coe_injective.commGroup _ rfl (fun _ _ => rfl)
+    (fun _ => rfl) (fun _ _ => rfl) (fun _ _ => rfl) (fun _ _ => rfl)
 
 private theorem idele_unit_open (v : HeightOneSpectrum R) :
     IsOpen (IdeleUnitSubgroup R K v : Set (v.adicCompletion K)ˣ) := by
@@ -60,28 +66,12 @@ private theorem idele_unit_open (v : HeightOneSpectrum R) :
   change IsOpen (v.adicCompletionIntegers K : Set (v.adicCompletion K))
   exact Valued.isOpen_valuationSubring _
 
-instance : IsTopologicalGroup (FiniteIdeles R K) := by
-  letI : Fact (∀ v : HeightOneSpectrum R,
-      IsOpen (IdeleUnitSubgroup R K v : Set (v.adicCompletion K)ˣ)) :=
-    ⟨idele_unit_open R K⟩
-  change IsTopologicalGroup <|
-    Πʳ v : HeightOneSpectrum R,
-      [(v.adicCompletion K)ˣ, IdeleUnitSubgroup R K v]
-  exact RestrictedProduct.isTopologicalGroup
-    (fun v : HeightOneSpectrum R ↦ (v.adicCompletion K)ˣ)
-
 /-- The idele group, with the product of the infinite-place unit topology and
 the finite restricted-product topology. -/
-def IdeleGroup : Type _ := (InfiniteAdeleRing K)ˣ × FiniteIdeles R K
+abbrev IdeleGroup : Type _ := (InfiniteAdeleRing K)ˣ × FiniteIdeles R K
 
 instance : CommGroup (IdeleGroup R K) := inferInstanceAs <|
   CommGroup ((InfiniteAdeleRing K)ˣ × FiniteIdeles R K)
-
-instance : TopologicalSpace (IdeleGroup R K) := inferInstanceAs <|
-  TopologicalSpace ((InfiniteAdeleRing K)ˣ × FiniteIdeles R K)
-
-instance : IsTopologicalGroup (IdeleGroup R K) := inferInstanceAs <|
-  IsTopologicalGroup ((InfiniteAdeleRing K)ˣ × FiniteIdeles R K)
 
 /-- The units of the finite adele ring are algebraically the finite ideles.
 The codomain carries the restricted-product topology. -/

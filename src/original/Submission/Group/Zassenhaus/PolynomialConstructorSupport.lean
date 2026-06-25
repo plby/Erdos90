@@ -1,6 +1,8 @@
 import Submission.Group.Zassenhaus.InversePolynomials
 import Submission.Group.Zassenhaus.SymbolicHallCollection
 
+universe u
+
 -- Merged from PolynomialBaseCases.lean
 
 /-!
@@ -89,8 +91,6 @@ already consumed by `FinitePGroupCollection.lean`.
 
 namespace Submission
 namespace TCTex
-
-universe u
 
 /-- Products of powers of one group element add their integer exponents. -/
 lemma prod_zpow_sum
@@ -399,8 +399,6 @@ turns a finite cutoff-specific rewrite run into the Claim 8 data interfaces.
 
 namespace Submission
 namespace TCTex
-
-universe u
 
 namespace SCFactor
 

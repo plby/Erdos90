@@ -344,6 +344,8 @@ noncomputable section
 namespace Submission
 namespace TCTex
 
+universe u
+
 open HACoeff
 open BRSpec
 open PTSubsti

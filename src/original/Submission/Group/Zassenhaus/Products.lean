@@ -3553,6 +3553,8 @@ end Submission
 namespace Submission
 namespace GroupAlgebra
 
+variable {p : ℕ} {G : Type*} [Group G]
+
 /-- Linear coordinate swaps are natural for maps of Zassenhaus layer kernels. -/
 @[simp] theorem zLKern.prodcomm_linequiv_naturalapply [Fact p.Prime]
     {G₁ G₂ H₁ H₂ : Type*} [Group G₁] [Group G₂] [Group H₁] [Group H₂]
@@ -3626,6 +3628,8 @@ end Submission
 
 namespace Submission
 namespace GroupAlgebra
+
+variable {p : ℕ} {G : Type*} [Group G]
 
 /-- Naturality square for coordinate swaps on Zassenhaus quotients. -/
 theorem zQuot.prod_comm_equivnatural
@@ -3716,6 +3720,8 @@ end Submission
 namespace Submission
 namespace GroupAlgebra
 
+variable {p : ℕ} {G : Type*} [Group G]
+
 /-- Naturality square for linear coordinate swaps on consecutive Zassenhaus quotients. -/
 theorem zNQuot.prod_commlin_equivnatural [Fact p.Prime]
     {G₁ G₂ H₁ H₂ : Type*} [Group G₁] [Group G₂] [Group H₁] [Group H₂]
@@ -3776,6 +3782,8 @@ end Submission
 namespace Submission
 namespace GroupAlgebra
 
+variable {p : ℕ} {G : Type*} [Group G]
+
 /-- Inverse coordinate swaps are natural on Zassenhaus quotients. -/
 @[simp] theorem zQuot.prodcomm_equivsymm_naturalapply
     {G₁ G₂ H₁ H₂ : Type*} [Group G₁] [Group G₂] [Group H₁] [Group H₂]
@@ -3794,6 +3802,8 @@ end Submission
 
 namespace Submission
 namespace GroupAlgebra
+
+variable {p : ℕ} {G : Type*} [Group G]
 
 /-- Inverse coordinate swaps are natural on consecutive Zassenhaus quotients. -/
 @[simp] theorem zNQuot.prodcomm_equivsymm_naturalapply
@@ -3828,6 +3838,8 @@ end Submission
 namespace Submission
 namespace GroupAlgebra
 
+variable {p : ℕ} {G : Type*} [Group G]
+
 /-- Inverse reassociation is natural on Zassenhaus quotients. -/
 @[simp] theorem zQuot.prodassoc_equivsymm_naturalapply
     {G₁ G₂ H₁ H₂ K₁ K₂ : Type*}
@@ -3852,6 +3864,8 @@ end Submission
 
 namespace Submission
 namespace GroupAlgebra
+
+variable {p : ℕ} {G : Type*} [Group G]
 
 /-- Inverse reassociation is natural on consecutive Zassenhaus quotients. -/
 @[simp] theorem zNQuot.prodassoc_equivsymm_naturalapply
@@ -3898,6 +3912,8 @@ end Submission
 namespace Submission
 namespace GroupAlgebra
 
+variable {p : ℕ} {G : Type*} [Group G]
+
 /-- Inverse linear coordinate swaps are natural on consecutive Zassenhaus quotients. -/
 @[simp] theorem zNQuot.prodcomm_linequiv_symmnatuappl
     [Fact p.Prime]
@@ -3932,6 +3948,8 @@ end Submission
 
 namespace Submission
 namespace GroupAlgebra
+
+variable {p : ℕ} {G : Type*} [Group G]
 
 /-- Inverse linear reassociation is natural on consecutive Zassenhaus quotients. -/
 @[simp] theorem zNQuot.prodassoc_linequiv_symmnatuappl
@@ -3980,6 +3998,8 @@ end Submission
 namespace Submission
 namespace GroupAlgebra
 
+variable {p : ℕ} {G : Type*} [Group G]
+
 /-- Naturality square for inverse coordinate swaps on Zassenhaus quotients. -/
 theorem zQuot.prod_commequiv_symmnatural
     {G₁ G₂ H₁ H₂ : Type*} [Group G₁] [Group G₂] [Group H₁] [Group H₂]
@@ -4021,6 +4041,8 @@ end Submission
 
 namespace Submission
 namespace GroupAlgebra
+
+variable {p : ℕ} {G : Type*} [Group G]
 
 /-- Naturality square for inverse reassociation on Zassenhaus quotients. -/
 theorem zQuot.prod_assocequiv_symmnatural
@@ -4072,6 +4094,8 @@ end Submission
 
 namespace Submission
 namespace GroupAlgebra
+
+variable {p : ℕ} {G : Type*} [Group G]
 
 /-- Naturality square for inverse linear coordinate swaps on consecutive Zassenhaus quotients. -/
 theorem zNQuot.prodcomm_linequiv_symmnatural [Fact p.Prime]
@@ -4135,6 +4159,8 @@ end Submission
 namespace Submission
 namespace GroupAlgebra
 
+variable {p : ℕ} {G : Type*}
+
 /-- Reverse pentagon coherence for ordinary Zassenhaus-quotient associator maps. -/
 theorem zQuot.map_prodassoc_symmpentagon
     (H K L : Type*) [Group G] [Group H] [Group K] [Group L] (n : ℕ)
@@ -4164,6 +4190,8 @@ end Submission
 
 namespace Submission
 namespace GroupAlgebra
+
+variable {p : ℕ} {G : Type*}
 
 /-- Reverse pentagon coherence for consecutive Zassenhaus-quotient associator maps. -/
 theorem zNQuot.map_prodassoc_symmpentagon
@@ -4196,6 +4224,8 @@ end Submission
 
 namespace Submission
 namespace GroupAlgebra
+
+variable {p : ℕ} {G : Type*}
 
 /-- Packaged reverse pentagon coherence for ordinary Zassenhaus-quotient associators. -/
 theorem zQuot.prod_assocequiv_symmpentagon
@@ -4237,6 +4267,8 @@ end Submission
 
 namespace Submission
 namespace GroupAlgebra
+
+variable {p : ℕ} {G : Type*}
 
 /-- Reverse pentagon coherence for Zassenhaus layer-kernel associator maps. -/
 theorem zLKern.map_prodassoc_symmpentagon
@@ -4291,6 +4323,8 @@ end Submission
 namespace Submission
 namespace GroupAlgebra
 
+variable {p : ℕ} {G : Type*}
+
 /-- Packaged reverse pentagon coherence for Zassenhaus layer-kernel associators. -/
 theorem zLKern.prod_assocequiv_symmpentagon
     (H K L : Type*) [Group G] [Group H] [Group K] [Group L] (n : ℕ)
@@ -4313,6 +4347,8 @@ end Submission
 
 namespace Submission
 namespace GroupAlgebra
+
+variable {p : ℕ} {G : Type*}
 
 /-- Reverse linear pentagon coherence for consecutive Zassenhaus quotients (prime case). -/
 theorem zNQuot.maplin_prodassoc_symmpentagon [Fact p.Prime]
@@ -4362,6 +4398,8 @@ end Submission
 
 namespace Submission
 namespace GroupAlgebra
+
+variable {p : ℕ} {G : Type*}
 
 set_option maxHeartbeats 400000 in
 -- Elaborating the nested packaged linear associators requires more reduction than the default.

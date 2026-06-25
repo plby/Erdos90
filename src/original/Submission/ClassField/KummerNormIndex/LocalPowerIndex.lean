@@ -55,6 +55,7 @@ noncomputable def integerEquivNormed
       exact (Valuation.Compatible.vle_iff_le
         (v := valuation K) x 1).1 hrel
 
+set_option synthInstance.maxHeartbeats 200000 in
 /-- The norm-valuative relation on the adic completion used by local class
 field theory. -/
 @[reducible]
@@ -68,6 +69,8 @@ noncomputable def completionNontriviallyNormed
   let hnontriviallyNormed : NontriviallyNormedField C :=
     Valued.toNontriviallyNormedField C ℤᵐ⁰
   have hnormWitness : ∃ x : C, x ≠ 0 ∧ ‖x‖ ≠ 1 := by
+    letI : NormedField C := hnormed
+    letI : NormedDivisionRing C := NormedField.toNormedDivisionRing
     letI := hnontriviallyNormed
     obtain ⟨x, hxpos, hxlt⟩ := NormedField.exists_norm_lt_one C
     exact ⟨x, norm_pos_iff.mp hxpos, ne_of_lt hxlt⟩

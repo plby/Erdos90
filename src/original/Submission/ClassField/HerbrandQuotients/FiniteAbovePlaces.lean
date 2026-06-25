@@ -79,10 +79,16 @@ theorem units_places_smul
   have hxIdele : principalIdele (NumberField.RingOfIntegers L) L (x : Lˣ) ∈
       idelesAtPlaces (K := K) (L := L) S :=
     (principal_ideles_places (K := K) (L := L) S x).2 x.property
-  have hstable := ideles_smul (K := K) (L := L)
-    S sigma (principalIdele (NumberField.RingOfIntegers L) L (x : Lˣ)) hxIdele
+  have hstable :
+      (concreteActionData (K := K) (L := L)).action.smul sigma
+          (principalIdele (NumberField.RingOfIntegers L) L (x : Lˣ)) ∈
+        idelesAtPlaces (K := K) (L := L) S := by
+    exact
+      ((idelesDistribAction (K := K) (L := L) S).smul sigma
+        ⟨principalIdele (NumberField.RingOfIntegers L) L (x : Lˣ), hxIdele⟩).property
   letI := idelesGaloisAction (K := K) (L := L)
-  rw [show sigma • principalIdele (NumberField.RingOfIntegers L) L (x : Lˣ) =
+  rw [show (concreteActionData (K := K) (L := L)).action.smul sigma
+        (principalIdele (NumberField.RingOfIntegers L) L (x : Lˣ)) =
       principalIdele (NumberField.RingOfIntegers L) L
         (Units.map sigma.toRingEquiv.toRingHom.toMonoidHom (x : Lˣ)) by
       exact D.smul_principalIdele sigma (x : Lˣ)] at hstable

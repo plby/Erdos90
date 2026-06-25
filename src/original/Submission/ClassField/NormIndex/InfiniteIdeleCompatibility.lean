@@ -921,6 +921,7 @@ theorem infinite_extension_norm
 set_option maxHeartbeats 1000000 in
 -- The full idèle identity is the product of its infinite and finite
 -- component identities.
+set_option synthInstance.maxHeartbeats 200000 in
 set_option maxRecDepth 100000 in
 /-- Norm compatibility for the canonical extension map on full idèles. -/
 theorem idele_extension

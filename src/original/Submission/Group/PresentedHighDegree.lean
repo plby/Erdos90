@@ -741,7 +741,29 @@ theorem
   classical
   let p := H.realizesFiniteNontrivial.p
   letI : Fact p.Prime := ⟨_p_prime⟩
+  haveI : Fact H.realizesFiniteNontrivial.p.Prime := ⟨_p_prime⟩
   haveI : Finite (H.pGroup rels) := H.presentedGroup_finite hrels
+  haveI : ∀ i : Fin H.generatorRank,
+      Module.Free (ZMod H.realizesFiniteNontrivial.p)
+        (H.pALayer (rels := rels) (n - 1)) := fun _ =>
+    Module.Free.of_divisionRing
+      (ZMod H.realizesFiniteNontrivial.p)
+      (H.pALayer (rels := rels) (n - 1))
+  haveI : ∀ i : H.pres_highdegree_relatorindex depth n,
+      Module.Free (ZMod H.realizesFiniteNontrivial.p)
+        (H.pALayer (rels := rels) (n - depth i.1)) := fun i =>
+    Module.Free.of_divisionRing
+      (ZMod H.realizesFiniteNontrivial.p)
+      (H.pALayer (rels := rels) (n - depth i.1))
+  haveI : Module.Free (ZMod H.realizesFiniteNontrivial.p)
+      (H.pALayer (rels := rels) n) := by
+    exact Module.Free.of_divisionRing
+      (ZMod H.realizesFiniteNontrivial.p)
+      (H.pALayer (rels := rels) n)
+  haveI : Module.Free (ZMod H.realizesFiniteNontrivial.p)
+      (H.pHSrc (rels := rels) depth n) := by
+    dsimp [PPDatum.pHSrc]
+    infer_instance
   rcases hΨ with ⟨Ψ, hΨsurj⟩
   have hdim :
       Module.finrank (ZMod H.realizesFiniteNontrivial.p)
@@ -763,10 +785,26 @@ theorem
       Module.finrank (ZMod H.realizesFiniteNontrivial.p)
           (H.pres_highdegree_gensource (rels := rels) n) =
         H.generatorRank * H.presentedAugmentationFinrank hrels (n - 1) := by
-    dsimp [PPDatum.pres_highdegree_gensource,
-      PPDatum.presentedAugmentationFinrank]
-    rw [Module.finrank_pi_fintype]
-    simp
+    let hfree : ∀ i : Fin H.generatorRank,
+        Module.Free (ZMod H.realizesFiniteNontrivial.p)
+          (H.pALayer (rels := rels) (n - 1)) := fun _ =>
+      Module.Free.of_divisionRing
+        (ZMod H.realizesFiniteNontrivial.p)
+        (H.pALayer (rels := rels) (n - 1))
+    let hfinite : ∀ i : Fin H.generatorRank,
+        Module.Finite (ZMod H.realizesFiniteNontrivial.p)
+          (H.pALayer (rels := rels) (n - 1)) := fun _ =>
+      inferInstance
+    dsimp [PPDatum.pres_highdegree_gensource]
+    rw [@Module.finrank_pi_fintype
+      (ZMod H.realizesFiniteNontrivial.p)
+      _ _
+      (Fin H.generatorRank)
+      _
+      (fun _ => H.pALayer (rels := rels) (n - 1))
+      _ _
+      hfree hfinite]
+    simp [PPDatum.presentedAugmentationFinrank]
   have hrelator :
       Module.finrank (ZMod H.realizesFiniteNontrivial.p)
           (H.pHSrc (rels := rels) depth n) =
@@ -774,24 +812,42 @@ theorem
           H.presentedAugmentationFinrank hrels (n - depth i)
         else
           0 := by
-    dsimp [PPDatum.pHSrc,
-      PPDatum.pres_highdegree_relatorindex,
-      PPDatum.presentedAugmentationFinrank]
-    rw [Module.finrank_pi_fintype]
+    let hfree : ∀ i : H.pres_highdegree_relatorindex depth n,
+        Module.Free (ZMod H.realizesFiniteNontrivial.p)
+          (H.pALayer (rels := rels) (n - depth i.1)) := fun i =>
+      Module.Free.of_divisionRing
+        (ZMod H.realizesFiniteNontrivial.p)
+        (H.pALayer (rels := rels) (n - depth i.1))
+    let hfinite : ∀ i : H.pres_highdegree_relatorindex depth n,
+        Module.Finite (ZMod H.realizesFiniteNontrivial.p)
+          (H.pALayer (rels := rels) (n - depth i.1)) := fun _ =>
+      inferInstance
+    dsimp [PPDatum.pHSrc, PPDatum.pres_highdegree_relatorindex]
+    rw [@Module.finrank_pi_fintype
+      (ZMod H.realizesFiniteNontrivial.p)
+      _ _
+      (H.pres_highdegree_relatorindex depth n)
+      _
+      (fun i => H.pALayer (rels := rels) (n - depth i.1))
+      _ _
+      hfree hfinite]
     change
       (∑ i : { i : Fin H.relationRank // depth i ≤ n },
-          H.presentedAugmentationFinrank hrels (n - depth i.1)) =
+          Module.finrank (ZMod H.realizesFiniteNontrivial.p)
+            (H.pALayer (rels := rels) (n - depth i.1))) =
         ∑ i, if depth i ≤ n then
-          H.presentedAugmentationFinrank hrels (n - depth i)
+          Module.finrank (ZMod H.realizesFiniteNontrivial.p)
+            (H.pALayer (rels := rels) (n - depth i))
         else
           0
     rw [← Finset.sum_filter]
-    exact
+    simpa [PPDatum.presentedAugmentationFinrank] using
       (Finset.sum_subtype
         (s := (Finset.univ.filter fun i : Fin H.relationRank => depth i ≤ n))
         (p := fun i : Fin H.relationRank => depth i ≤ n)
         (by intro i; simp)
-        (fun i => H.presentedAugmentationFinrank hrels (n - depth i))).symm
+        (fun i => Module.finrank (ZMod H.realizesFiniteNontrivial.p)
+          (H.pALayer (rels := rels) (n - depth i)))).symm
   have htarget :
       Module.finrank (ZMod H.realizesFiniteNontrivial.p)
           (H.pres_highdegree_targetrelators (rels := rels) depth n) =
@@ -802,7 +858,7 @@ theorem
             0 := by
     dsimp [PPDatum.pres_highdegree_targetrelators]
     rw [Module.finrank_prod, hrelator]
-    rfl
+    simp [PPDatum.presentedAugmentationFinrank]
   simpa [hsource, htarget] using hdim
 /--
 The augmentation-layer Hilbert sequence eventually vanishes for the finite

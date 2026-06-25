@@ -197,6 +197,8 @@ theorem extension_splits_completely
     adicFactorAlgebra (K := K) (L := L) P hP Q
   letI : FiniteDimensional (P.adicCompletion K) (q.adicCompletion L) :=
     finite_completion_module (K := K) (L := L) P Q
+  letI : Module.Free (P.adicCompletion K) (q.adicCompletion L) :=
+    Module.Free.of_divisionRing (P.adicCompletion K) (q.adicCompletion L)
   apply Units.ext
   change Algebra.norm (P.adicCompletion K)
       (algebraMap (P.adicCompletion K) (q.adicCompletion L)

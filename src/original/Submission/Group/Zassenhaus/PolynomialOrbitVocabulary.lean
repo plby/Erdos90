@@ -4995,6 +4995,8 @@ namespace Submission
 namespace TCTex
 namespace ISClos
 
+universe u
+
 open RITrace
 open OSVocab
 open LSProgra

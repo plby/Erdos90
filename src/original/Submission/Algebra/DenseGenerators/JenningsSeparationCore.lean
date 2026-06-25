@@ -167,6 +167,7 @@ lemma basis_high_repr
 /-- If every ordered word of cutoff `s` has zero coordinates below `s`, then the ordered word span
 is contained in the corresponding high-weight basis span. -/
 lemma OZReps.wordspanle_basishighweight_spanwordcoords
+    {κ : Type v}
     {p : ℕ} [Fact p.Prime]
     {Q : Type u} [Group Q]
     {m : ℕ}
@@ -203,6 +204,7 @@ lemma OZReps.wordspanle_basishighweight_spanwordcoords
 /-- Congruent algebra elements have the same low coordinates once the word-span generators at
 that cutoff have zero low coordinates. -/
 lemma OZReps.basisrepr_eqalgcongruent_modwordspan
+    {κ : Type v}
     {p : ℕ} [Fact p.Prime]
     {Q : Type u} [Group Q]
     {m : ℕ}
@@ -235,6 +237,7 @@ lemma OZReps.basisrepr_eqalgcongruent_modwordspan
 /-- Word-evaluation congruence is a coordinate equality statement below the cutoff, once the
 cutoff word-span generators are known to have zero low coordinates. -/
 lemma OZReps.basisreprword_evaleqwordeval_conmodworspa
+    {κ : Type v}
     {p : ℕ} [Fact p.Prime]
     {Q : Type u} [Group Q]
     {m : ℕ}
@@ -256,6 +259,7 @@ lemma OZReps.basisreprword_evaleqwordeval_conmodworspa
 /-- The generic positive augmentation power is contained in a high-weight basis span once the
 ordered word-span generators have the corresponding coordinate vanishing. -/
 lemma OZReps.augidealpower_succlebasishigh_weispaworcoo
+    {κ : Type v}
     {p : ℕ} [Fact p.Prime]
     {Q : Type u} [Group Q]
     {m : ℕ}
@@ -595,6 +599,7 @@ lemma OZReps.nonemptjenning_sepdata_basisexpansion
       haug
       (O.separates_sub_expansion hbot B hexp)
 
+set_option maxHeartbeats 1000000 in
 /-- In the successor cutoff case, it is enough to prove coordinate vanishing for the ordered
 augmentation words.  The generic augmentation-power vanishing is supplied by the ordered word-span
 bridge. -/
@@ -779,6 +784,7 @@ lemma OZReps.lowweight_coordsvanish_wordbounmult
       hword
       (O.perm_bounded_multiplicity w hbounded)
 
+set_option maxHeartbeats 1000000 in
 /-- If a word evaluation already lies in the high-weight word span, then it has no low Jennings
 coordinates, assuming the cutoff word-span generators have that vanishing. -/
 lemma OZReps.lowwei_vanis_evalm

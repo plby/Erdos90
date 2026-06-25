@@ -20,7 +20,7 @@ open scoped Pointwise
 namespace Submission
 namespace TBluepr
 
-universe u
+universe u v
 
 open NumberField
 open Submission.NumberTheory.Milne

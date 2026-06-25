@@ -188,7 +188,8 @@ theorem standard_open_index
     have hpowaClass :
         QuotientGroup.mk' J (pi ^ (-a)) = 1 :=
       (QuotientGroup.eq_one_iff (pi ^ (-a))).2 hpowaJ
-    rw [show u = x * pi ^ (-a) by rfl, map_mul, hpowaClass, mul_one]
+    rw [show u = x * pi ^ (-a) by rfl, map_mul, hpowaClass]
+    exact mul_one ((QuotientGroup.mk' J) x)
   letI : Finite (Kˣ ⧸ J) :=
     Finite.of_surjective qbar hqbar_surjective
   exact Subgroup.finiteIndex_of_finite_quotient

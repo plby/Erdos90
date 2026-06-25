@@ -810,7 +810,7 @@ structure TSFtry
     (H : ∀ r : ℕ, BCWta.{u} d r)
     (lowerWeight : ℕ) where
   packet :
-    ∀ (B A : SPFactor H ι),
+    ∀ {ι : Type} (B A : SPFactor H ι),
       lowerWeight ≤ B.word.weight HEAddres.weight →
       lowerWeight ≤ A.word.weight HEAddres.weight →
         TSPkt n B A
@@ -1784,7 +1784,7 @@ structure SemanticInsertionBranch
     ∀ lowerWeight : ℕ,
       TSNormalc
           (n := n) (lowerWeight := lowerWeight + 1) H →
-        ∀ (coordinates : CHRecipe H ι)
+        ∀ {ι : Type} (coordinates : CHRecipe H ι)
           (factor : SPFactor H ι),
           coordinates.NTBelow lowerWeight →
           factor.word.weight HEAddres.weight = lowerWeight →
@@ -2478,7 +2478,7 @@ def insertionBranch
         (n := n) H) :
     SemanticInsertionBranch
       (n := n) H where
-  insert lowerWeight normalizer coordinates factor hcoordinates hfactorWeight
+  insert lowerWeight normalizer {_ι} coordinates factor hcoordinates hfactorWeight
       hfactorTruncated :=
     (factory.resolve lowerWeight coordinates factor hcoordinates hfactorWeight
       hfactorTruncated).exists_insertion normalizer hfactorWeight
@@ -2602,7 +2602,7 @@ def insertionBranch
         (n := n) H) :
     SemanticInsertionBranch
       (n := n) H where
-  insert lowerWeight normalizer coordinates factor hcoordinates hfactorWeight
+  insert lowerWeight normalizer {_ι} coordinates factor hcoordinates hfactorWeight
       hfactorTruncated :=
     ((schedule.route lowerWeight normalizer coordinates factor hcoordinates
       hfactorWeight hfactorTruncated).activeLayerResolution
@@ -3108,7 +3108,7 @@ def insertionBranch
         (n := n) H) :
     SemanticInsertionBranch
       (n := n) H where
-  insert lowerWeight normalizer coordinates factor hcoordinates hfactorWeight
+  insert lowerWeight normalizer {_ι} coordinates factor hcoordinates hfactorWeight
       hfactorTruncated :=
     (activeHigherTail hcoordinates hfactorWeight hfactorTruncated
       (blockFactory.resolve lowerWeight coordinates factor hcoordinates
@@ -3473,7 +3473,7 @@ def insertionBranch
         (n := n) H) :
     SemanticInsertionBranch
       (n := n) H where
-  insert lowerWeight normalizer coordinates factor hcoordinates hfactorWeight
+  insert lowerWeight normalizer {_ι} coordinates factor hcoordinates hfactorWeight
       hfactorTruncated := by
     let blockRoute :=
       blockSchedule.route lowerWeight normalizer coordinates factor
@@ -5458,6 +5458,8 @@ end BRSpec
 
 namespace PFSubsti
 namespace TAPkt
+
+universe u
 
 open BRSpec
 

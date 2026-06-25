@@ -153,6 +153,8 @@ private noncomputable def centralizerTensorEquiv :
   let v : Tˣ := Classical.choose hex
   have hv : ∀ b : B, phi b = (v : T) * psi b * (v⁻¹ : Tˣ) :=
     Classical.choose_spec hex
+  letI : SMulCommClass T k T :=
+    ⟨fun x r y => Algebra.mul_smul_comm r x y⟩
   let inner : T ≃ₐ[k] T :=
     MulSemiringAction.toAlgEquiv k T (ConjAct.toConjAct v)
   have hrange : phi.range = psi.range.map inner.toAlgHom := by

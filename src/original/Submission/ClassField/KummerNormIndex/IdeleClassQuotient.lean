@@ -177,14 +177,9 @@ def down : IdeleNormQuotient D.K' D.L' →*
 
 /-- The down-after-up composite in Milne's diagram is multiplication by
 `m` (multiplicatively, the `m`th-power map). -/
-theorem down_comp_up :
-    D.down.comp D.up =
-      (powMonoidHom D.m : IdeleNormQuotient K L →*
-        IdeleNormQuotient K L) := by
-  apply MonoidHom.ext
-  intro x
+theorem down_up_apply (x : IdeleNormQuotient K L) :
+    D.down (D.up x) = x ^ D.m := by
   refine Quotient.inductionOn' x fun c ↦ ?_
-  rw [MonoidHom.comp_apply]
   change QuotientGroup.mk' _
       ((canonicalIdeleNorm (K := K) (L := D.K')) (D.iK c)) =
     QuotientGroup.mk' _ (c ^ D.m)
@@ -228,12 +223,14 @@ theorem down_surjective
     Function.Surjective D.down := by
   have hcop : D.m.Coprime p :=
     coprime_dvd_pred hp D.m_dvd_pred
-  have hpow : Function.Surjective
-      (powMonoidHom D.m : IdeleNormQuotient K L →*
-        IdeleNormQuotient K L) :=
-    (bijective_coprime_exponent hcop hexponent).2
-  rw [← D.down_comp_up] at hpow
-  exact Function.Surjective.of_comp hpow
+  have hpow :=
+    surjective_coprime_exponent
+      (A := IdeleNormQuotient K L) hcop hexponent
+  intro y
+  obtain ⟨x, hx⟩ := hpow y
+  exact ⟨D.up x, by
+    rw [D.down_up_apply]
+    exact hx⟩
 
 end CCDataa
 

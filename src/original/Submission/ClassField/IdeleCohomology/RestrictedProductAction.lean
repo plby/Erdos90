@@ -247,12 +247,14 @@ def IAData.principalIdeleHom
         (MonoidHom.toAdditive
           (principalIdele (RingOfIntegers L) L)).toIntLinearMap
       isIntertwining' := fun sigma => by
-        ext x
-        change principalIdele (RingOfIntegers L) L
-            (Units.map sigma.toRingEquiv.toRingHom x.toMul) =
-          D.action.smul sigma
-            (principalIdele (RingOfIntegers L) L x.toMul)
-        exact (D.smul_principalIdele sigma x.toMul).symm }
+        apply LinearMap.ext
+        intro x
+        change Additive.ofMul (principalIdele (RingOfIntegers L) L
+            (Units.map sigma.toRingEquiv.toRingHom x.toMul)) =
+          Additive.ofMul (D.action.smul sigma
+            (principalIdele (RingOfIntegers L) L x.toMul))
+        exact congrArg Additive.ofMul
+          (D.smul_principalIdele sigma x.toMul).symm }
 
 /-- A proposition-valued form of the missing construction, convenient for
 the statement inventory. -/

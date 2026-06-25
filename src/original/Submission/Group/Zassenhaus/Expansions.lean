@@ -1,5 +1,7 @@
 import Submission.Group.Zassenhaus.Counting
 
+universe u
+
 /-!
 # Finite repeated-block expansions for Hall power collection
 

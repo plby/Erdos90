@@ -461,6 +461,8 @@ theorem
 
 end HEWord
 
+universe u
+
 /--
 Adjacent swaps cannot recollect the atomic residual source into a strictly
 heavier list: the appended original factor survives every such rewrite.

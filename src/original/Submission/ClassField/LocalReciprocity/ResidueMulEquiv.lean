@@ -42,7 +42,21 @@ variable
 Theorem III.3.1. -/
 noncomputable def localNormResidue :
     Abelianization Gal(L/K) ≃* (Kˣ ⧸ normSubgroup K L) :=
-  (localResidueEquiv K L).toMultiplicative
+  let e : Additive (Abelianization Gal(L/K)) ≃+
+      Additive (Kˣ ⧸ normSubgroup K L) :=
+    localResidueEquiv K L
+  { toFun := fun x => Additive.toMul (e (Additive.ofMul x))
+    invFun := fun x => Additive.toMul (e.symm (Additive.ofMul x))
+    left_inv := fun x => by
+      change Additive.toMul (e.symm (e (Additive.ofMul x))) = x
+      rw [e.symm_apply_apply]
+      rfl
+    right_inv := fun x => by
+      change Additive.toMul (e (e.symm (Additive.ofMul x))) = x
+      rw [e.apply_symm_apply]
+      rfl
+    map_mul' := fun x y => by
+      rw [ofMul_mul, map_add, toMul_add] }
 
 /-- The unconditional finite local Artin homomorphism, with no commutativity
 assumption on the Galois group. -/
@@ -150,21 +164,20 @@ def ForwardInclusionSquare : Prop :=
         QuotientGroup.mk' (normSubgroup (F K L H) L)
           (unitInclusion K (F K L H) a)
 
+set_option maxRecDepth 10000 in
 /-- Forward corestriction naturality implies the first Artin square. -/
 theorem norm_square_forward
     (hforward : ForwardNormSquare K L H) :
     NormSquare K L H := by
-  have hinverse := inverse_square_forward
-    (fixedResidueEquiv K L H)
-    (localNormResidue K L)
-    (abelianizedSubgroupInclusion H)
-    (towerNormHom K (F K L H) L)
-    hforward
+  unfold NormSquare
   apply MonoidHom.ext
   intro x
-  have hx := DFunLike.congr_fun hinverse
-    (QuotientGroup.mk' (normSubgroup (F K L H) L) x)
-  simpa [NormSquare, fixedArtinHom, localArtinHom] using hx
+  let q : (F K L H)ˣ ⧸ normSubgroup (F K L H) L :=
+    QuotientGroup.mk' (normSubgroup (F K L H) L) x
+  have hx := DFunLike.congr_fun hforward
+    ((fixedResidueEquiv K L H).symm q)
+  apply (localNormResidue K L).injective
+  simpa [fixedArtinHom, localArtinHom, q] using hx.symm
 
 set_option maxRecDepth 10000 in
 /-- Forward restriction naturality implies the second Artin square. -/

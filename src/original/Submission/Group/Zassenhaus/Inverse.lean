@@ -234,6 +234,8 @@ namespace Submission
 namespace TCTex
 namespace URVocabu
 
+universe u
+
 open HACoeff
 open BRSpec
 open BRPkt
@@ -458,6 +460,8 @@ The file is intentionally not imported by the existing collection proof.
 namespace Submission
 namespace TCTex
 namespace IPCovera
+
+universe u
 
 open HACoeff
 open BRSpec

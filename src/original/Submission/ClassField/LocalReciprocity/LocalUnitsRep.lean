@@ -89,8 +89,21 @@ with the Galois group itself. -/
 noncomputable def abelianLocalArtin
     [IsMulCommutative Gal(L/K)] :
     (Kˣ ⧸ normSubgroup K L) ≃* Gal(L/K) :=
-  ((localArtinEquiv K L).trans
-    (Abelianization.equivOfComm (H := Gal(L/K))).symm.toAdditive).toMultiplicative
+  let e : Additive (Kˣ ⧸ normSubgroup K L) ≃+ Additive Gal(L/K) :=
+    (localArtinEquiv K L).trans
+      (Abelianization.equivOfComm (H := Gal(L/K))).symm.toAdditive
+  { toFun := fun x => Additive.toMul (e (Additive.ofMul x))
+    invFun := fun x => Additive.toMul (e.symm (Additive.ofMul x))
+    left_inv := fun x => by
+      change Additive.toMul (e.symm (e (Additive.ofMul x))) = x
+      rw [e.symm_apply_apply]
+      rfl
+    right_inv := fun x => by
+      change Additive.toMul (e (e.symm (Additive.ofMul x))) = x
+      rw [e.apply_symm_apply]
+      rfl
+    map_mul' := fun x y => by
+      rw [ofMul_mul, map_add, toMul_add] }
 
 end
 

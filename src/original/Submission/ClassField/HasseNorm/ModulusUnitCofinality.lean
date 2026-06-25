@@ -327,29 +327,37 @@ theorem modulusSubgroupsCofinal :
         positiveRealSubgroup] using hw
     · rw [infiniteBasicSubgroup, dif_neg hv]
       exact Subgroup.mem_top _
-  have hHclopen : IsClopen (H : Set (IdeleGroup (OK K) K)) :=
-    ⟨H.isClosed_of_isOpen hH, hH⟩
   have haInfiniteH : (a.1, 1) ∈ H := by
-    let embedInfinite : (InfiniteAdeleRing K)ˣ → IdeleGroup (OK K) K :=
-      fun x ↦ (x, 1)
-    have hconnected : IsConnected
-        (embedInfinite ''
-          (infiniteIdeleSubgroup (K := K) :
-            Set (InfiniteAdeleRing K)ˣ)) :=
-      (infinite_idele_connected (K := K)).image
-        embedInfinite (continuous_id.prodMk continuous_const).continuousOn
-    have hone : (1 : IdeleGroup (OK K) K) ∈
-        embedInfinite ''
-          (infiniteIdeleSubgroup (K := K) :
-            Set (InfiniteAdeleRing K)ˣ) := by
-      exact ⟨1, (infiniteIdeleSubgroup (K := K)).one_mem, rfl⟩
-    have haImage : (a.1, 1) ∈
-        embedInfinite ''
-          (infiniteIdeleSubgroup (K := K) :
-            Set (InfiniteAdeleRing K)ˣ) :=
-      ⟨a.1, haInfinite, rfl⟩
-    apply hHclopen.connectedComponent_subset H.one_mem
-    exact (hconnected.subset_connectedComponent hone) haImage
+    let S : Subgroup (infiniteIdeleSubgroup (K := K)) :=
+      { carrier := {x | ((x : (InfiniteAdeleRing K)ˣ), 1) ∈ H}
+        one_mem' := by
+          simpa only [Subgroup.coe_one] using H.one_mem
+        mul_mem' := by
+          intro x y hx hy
+          simpa only [Subgroup.coe_mul, Prod.mk_mul_mk, mul_one] using
+            H.mul_mem hx hy
+        inv_mem' := by
+          intro x hx
+          simpa only [Subgroup.coe_inv, Prod.inv_mk, inv_one] using
+            H.inv_mem hx }
+    have hSopen : IsOpen (S : Set (infiniteIdeleSubgroup (K := K))) := by
+      change IsOpen
+        ((fun x : infiniteIdeleSubgroup (K := K) =>
+            (((x : (InfiniteAdeleRing K)ˣ), 1) :
+              IdeleGroup (OK K) K)) ⁻¹'
+          (H : Set (IdeleGroup (OK K) K)))
+      exact hH.preimage (continuous_subtype_val.prodMk continuous_const)
+    have hSclosed : IsClosed (S : Set (infiniteIdeleSubgroup (K := K))) :=
+      S.isClosed_of_isOpen hSopen
+    haveI : PreconnectedSpace (infiniteIdeleSubgroup (K := K)) :=
+      Subtype.preconnectedSpace (infinite_idele_connected (K := K)).isPreconnected
+    have hStop : (S : Set (infiniteIdeleSubgroup (K := K))) = Set.univ :=
+      IsClopen.eq_univ ⟨hSclosed, hSopen⟩ ⟨1, S.one_mem⟩
+    have haS : (⟨a.1, haInfinite⟩ :
+        infiniteIdeleSubgroup (K := K)) ∈ (S : Set _) := by
+      rw [hStop]
+      exact Set.mem_univ _
+    exact haS
   let b : ∀ P, localUnits P := fun P ↦
     ⟨a.2.1 P, haFiniteUnits P⟩
   have hb : b ∈ (I : Set (FinitePrime K)).pi t := by

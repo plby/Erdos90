@@ -1,5 +1,7 @@
 import Submission.Group.Zassenhaus.PowerPolynomials
 
+universe u
+
 /-!
 # Repeated-block collector output for Hall powers
 

@@ -52,12 +52,32 @@ theorem abelian_artin_residue
   constructor
   · intro h
     have h' := congrArg (abelianLocalArtin K L).symm h
+    have hab (y : Abelianization Gal(L/K)) :
+        Abelianization.of ((Abelianization.lift (MonoidHom.id Gal(L/K))) y) = y :=
+      (Abelianization.equivOfComm (H := Gal(L/K))).right_inv y
     simpa [abelianArtinHom, abelianLocalArtin,
-      localArtinEquiv, localNormResidue] using h'.symm
+      localArtinEquiv, localNormResidue] using by
+        simp [abelianArtinHom, abelianLocalArtin, localArtinEquiv] at h' ⊢
+        rw [hab] at h'
+        have h'' := congrArg
+          (fun y : Abelianization Gal(L/K) =>
+            Additive.toMul ((localResidueEquiv K L) (Additive.ofMul y)))
+          h'.symm
+        simpa using h''
   · intro h
     apply (abelianLocalArtin K L).symm.injective
+    have hab (y : Abelianization Gal(L/K)) :
+        Abelianization.of ((Abelianization.lift (MonoidHom.id Gal(L/K))) y) = y :=
+      (Abelianization.equivOfComm (H := Gal(L/K))).right_inv y
     simpa [abelianArtinHom, abelianLocalArtin,
-      localArtinEquiv, localNormResidue] using h.symm
+      localArtinEquiv, localNormResidue] using by
+        simp [localNormResidue] at h ⊢
+        rw [hab]
+        have h' := congrArg
+          (fun y : Kˣ ⧸ normSubgroup K L =>
+            Additive.toMul ((localResidueEquiv K L).symm (Additive.ofMul y)))
+          h.symm
+        simpa using h'
 
 variable {n : ℕ} [NeZero n]
 

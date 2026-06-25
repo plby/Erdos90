@@ -1,5 +1,7 @@
 import Submission.Group.Zassenhaus.Data
 
+universe u
+
 /-!
 # Repeated-block recipes for Hall power collection
 

@@ -149,7 +149,7 @@ structure TSNormalc
     (H : ∀ r : ℕ, BCWta.{u} d r) :
     Prop where
   normalize :
-    ∀ source : List (SPFactor H ι),
+    ∀ {ι : Type} (source : List (SPFactor H ι)),
       SPFactor.IsTruncated n source →
       SPFactor.WordWeightLeast lowerWeight source →
         ∃ coordinates : CHRecipe H ι,
@@ -785,7 +785,8 @@ structure TSInsertc
     (H : ∀ r : ℕ, BCWta.{u} d r) :
     Prop where
   insert :
-    ∀ (coordinates : CHRecipe H ι)
+    ∀ {ι : Type}
+      (coordinates : CHRecipe H ι)
       (factor : SPFactor H ι),
       coordinates.NTBelow lowerWeight →
       lowerWeight ≤ factor.word.weight HEAddres.weight →

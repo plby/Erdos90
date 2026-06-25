@@ -1045,9 +1045,9 @@ theorem inflation_combined_end :
     inflation_bimodule_base]
   ring
 
-set_option synthInstance.maxHeartbeats 100000 in
+set_option synthInstance.maxHeartbeats 500000 in
 -- Extra heartbeats are needed for the typeclass search in this proof.
-set_option maxHeartbeats 100000 in
+set_option maxHeartbeats 1000000 in
 -- Simplicity gives injectivity; equal finite dimensions give surjectivity.
 theorem inflation_combined_bijective :
     Function.Bijective (inflationCombinedAction (E := E) K c) := by
@@ -1068,10 +1068,19 @@ theorem inflation_combined_bijective :
       (inflationCombinedAction (E := E) K c) := by
     intro x y hxy
     exact hinjRing hxy
+  have hinjLinear : Function.Injective
+      (inflationCombinedAction (E := E) K c).toLinearMap := by
+    intro x y hxy
+    exact hinj hxy
   have hsurj : Function.Surjective
       (inflationCombinedAction (E := E) K c).toLinearMap :=
     (LinearMap.injective_iff_surjective_of_finrank_eq_finrank
-      (inflation_combined_end (E := E) K c)).mp hinj
+      (K := K)
+      (V := CProduc (concreteInflationCocycle K hFEFact.out c) ⊗[K]
+        (CProduc c)ᵐᵒᵖ)
+      (V₂ := Module.End K (Gal(F/K) →₀ E))
+      (f := (inflationCombinedAction (E := E) K c).toLinearMap)
+      (inflation_combined_end (E := E) K c)).mp hinjLinear
   exact ⟨hinj, hsurj⟩
 
 set_option synthInstance.maxHeartbeats 100000 in

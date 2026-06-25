@@ -62,6 +62,12 @@ theorem infinite_completion_trans
     infinite_completion_module (K := K) (L := E) v u
   letI : Module.Finite u.1.1.Completion w.1.1.Completion :=
     infinite_completion_module (K := E) (L := L) u.1 w
+  letI : Module.Free v.1.Completion u.1.1.Completion :=
+    Module.Free.of_divisionRing v.1.Completion u.1.1.Completion
+  letI : Module.Free u.1.1.Completion w.1.1.Completion :=
+    Module.Free.of_divisionRing u.1.1.Completion w.1.1.Completion
+  letI : Module.Free v.1.Completion w.1.1.Completion :=
+    Module.Free.of_divisionRing v.1.Completion w.1.1.Completion
   apply Units.ext
   change Algebra.norm v.1.Completion (z : w.1.Completion) =
     Algebra.norm v.1.Completion

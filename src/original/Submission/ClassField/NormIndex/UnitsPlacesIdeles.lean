@@ -68,12 +68,24 @@ noncomputable def restrictedPrincipalHom
         (MonoidHom.toAdditive
           (unitsPlacesIdeles (K := K) (L := L) S)).toIntLinearMap
       isIntertwining' := fun sigma ↦ by
-        ext x
-        change principalIdele (NumberField.RingOfIntegers L) L
-            (Units.map sigma.toRingEquiv.toRingHom (x.toMul : Lˣ)) =
-          (concreteActionData (K := K) (L := L)).action.smul sigma
-            (principalIdele (NumberField.RingOfIntegers L) L (x.toMul : Lˣ))
-        exact (IAData.smul_principalIdele
+        apply LinearMap.ext
+        intro x
+        apply Additive.toMul.injective
+        simp only [Representation.ofMulDistribMulAction_apply_apply,
+          AddMonoidHom.coe_toIntLinearMap, MonoidHom.coe_toAdditive,
+          LinearMap.coe_comp, Function.comp_apply, toMul_ofMul]
+        apply Subtype.ext
+        change
+          (((unitsPlacesIdeles (K := K) (L := L) S)
+            ((placesDistribAction (K := K) (L := L) S).smul sigma x.toMul) :
+              ICohomo.idelesAtPlaces (K := K) (L := L) S) :
+            IdeleGroup (NumberField.RingOfIntegers L) L) =
+          (((idelesDistribAction (K := K) (L := L) S).smul sigma
+            ((unitsPlacesIdeles (K := K) (L := L) S) x.toMul) :
+              ICohomo.idelesAtPlaces (K := K) (L := L) S) :
+            IdeleGroup (NumberField.RingOfIntegers L) L)
+        simpa [unitsPlacesIdeles, idelesDistribAction, concreteActionData,
+          idelesGaloisAction] using (IAData.smul_principalIdele
           (concreteActionData (K := K) (L := L))
           sigma (x.toMul : Lˣ)).symm }
 

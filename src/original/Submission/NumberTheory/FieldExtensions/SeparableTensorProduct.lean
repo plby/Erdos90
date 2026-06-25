@@ -11,6 +11,8 @@ namespace Submission.NumberTheory.Milne
 
 open scoped Matrix TensorProduct
 
+universe u
+
 attribute [local instance] Algebra.TensorProduct.rightAlgebra
 
 /-- If `K / k` is finite and separable and `Ω / k` is any field extension, then

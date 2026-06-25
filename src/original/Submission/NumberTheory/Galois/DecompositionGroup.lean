@@ -468,6 +468,8 @@ end Completion
 
 section InfiniteCompletion
 
+universe u
+
 open NumberField
 
 variable {K L : Type u} [Field K] [Field L] [Algebra K L]
@@ -554,8 +556,10 @@ local instance decompositionInfiniteGlobalCompletionTower :
 
 local instance decompositionInfiniteLocalCompletionTower :
     IsScalarTower K v.1.Completion w.1.Completion :=
-  IsScalarTower.of_algebraMap_eq' (by
-    simpa using (completion_lies_comp v.1 w.1 hwv.out).symm)
+  IsScalarTower.of_algebraMap_eq' <| by
+    change (completionEmbedding w.1).comp (algebraMap K L) =
+      (completionLies v.1 w.1 hwv.out).comp (completionEmbedding v.1)
+    exact (completion_lies_comp v.1 w.1 hwv.out).symm
 
 set_option maxHeartbeats 1000000 in
 -- The complex-base case unfolds several completion equivalences.
@@ -732,8 +736,6 @@ def restrictInfiniteDecomposition
     absoluteValueDecomposition v.1 w.1 := by
   refine ⟨restrictCompletionAlg v.1 w.1 φ, ?_⟩
   intro x
-  rw [← norm_completionEmbedding w.1]
-  rw [embedding_restrict_alg v.1 w.1]
   have hnorm : ‖φ (completionEmbedding w.1 x)‖ =
       ‖completionEmbedding w.1 x‖ := by
     have h := (infinite_alg_isometry v w φ).dist_eq
@@ -750,8 +752,15 @@ def restrictInfiniteDecomposition
           dist (φ (completionEmbedding w.1 x)) z) hzero.symm
       _ = dist (completionEmbedding w.1 x) 0 := h
       _ = ‖completionEmbedding w.1 x‖ := dist_zero_right _
-  rw [hnorm]
-  exact norm_completionEmbedding w.1 x
+  calc
+    w.1 (restrictCompletionAlg v.1 w.1 φ x)
+        = ‖completionEmbedding w.1
+            (restrictCompletionAlg v.1 w.1 φ x)‖ :=
+      (norm_completionEmbedding w.1 _).symm
+    _ = ‖φ (completionEmbedding w.1 x)‖ := by
+      rw [embedding_restrict_alg v.1 w.1]
+    _ = ‖completionEmbedding w.1 x‖ := hnorm
+    _ = w.1 x := norm_completionEmbedding w.1 x
 
 omit [Algebra.IsSeparable K L] [FiniteDimensional K L] in
 private theorem decomposition_infinite_restrict
@@ -783,6 +792,8 @@ theorem infinite_decomposition_completion
   intro φ
   exact ⟨restrictInfiniteDecomposition v w φ,
     decomposition_infinite_restrict v w φ⟩
+
+set_option maxHeartbeats 1000000
 
 /-- The archimedean half of Milne, Proposition 8.10: the decomposition group
 of an infinite place is the Galois group of the corresponding extension of

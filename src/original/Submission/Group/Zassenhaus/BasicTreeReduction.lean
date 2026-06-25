@@ -75,6 +75,8 @@ theorem
 
 end HEWord
 
+universe u
+
 namespace
   TSRecollb
 
@@ -782,6 +784,8 @@ theorem continuation_raw_series
 
 end HEWord
 
+universe u
+
 namespace TSFtrya
 
 open HEWord
@@ -1285,6 +1289,8 @@ theorem
 
 end HEWord
 
+universe u
+
 namespace
   TSRecollb
 
@@ -1384,6 +1390,8 @@ theorem
   simp
 
 end HEWord
+
+universe u
 
 namespace
   TSRecollb
@@ -1536,6 +1544,8 @@ theorem
   simp
 
 end HEWord
+
+universe u
 
 namespace
   TSRecollb
@@ -1707,6 +1717,8 @@ theorem
 
 end HEWord
 
+universe u
+
 namespace
   TSRecollb
 
@@ -1827,6 +1839,8 @@ theorem
     hword]
 
 end HEWord
+
+universe u
 
 namespace
   TSRecollb

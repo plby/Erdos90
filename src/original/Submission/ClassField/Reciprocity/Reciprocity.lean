@@ -27,6 +27,17 @@ open Submission.CField.Ideles
 variable (R K G : Type*) [CommRing R] [IsDedekindDomain R] [Field K]
   [Algebra R K] [IsFractionRing R K] [Group G]
 
+local instance principalIdelesNormal :
+    (principalIdeles R K).Normal := by
+  refine ⟨fun n hn g => ?_⟩
+  simpa [mul_assoc, mul_left_comm, mul_comm] using hn
+
+local instance principalIdelesSupNormal
+    (N : Subgroup (IdeleGroup R K)) :
+    (principalIdeles R K ⊔ N).Normal := by
+  refine ⟨fun n hn g => ?_⟩
+  simpa [mul_assoc, mul_left_comm, mul_comm] using hn
+
 /-- A homomorphism on ideles satisfies the principal-idele clause of the
 global reciprocity law. -/
 def TrivialPrincipalIdeles (phi : IdeleGroup R K →* G) : Prop :=

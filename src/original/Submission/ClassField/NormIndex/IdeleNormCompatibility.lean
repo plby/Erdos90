@@ -1034,6 +1034,9 @@ theorem extension_idele_norm
         (finitePlaceTransport (K := K) sigma R).toRingHom.toMonoidHom
         (x.1 (sigma⁻¹ • R))) hQ
 
+set_option synthInstance.maxHeartbeats 200000 in
+-- The finite restricted-product action unfolds transported completion
+-- instances when elaborating the product action.
 /-- Norm compatibility on the finite restricted product. -/
 theorem idele_extension_norm
     (x : FiniteIdeles (NumberField.RingOfIntegers L) L) :

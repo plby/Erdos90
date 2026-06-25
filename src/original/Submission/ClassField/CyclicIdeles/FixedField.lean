@@ -84,6 +84,7 @@ private theorem prime_smul_restrict
 
 set_option maxHeartbeats 3000000 in
 -- Finite-idèle extension across the fixed field unfolds dependent prime coordinates.
+set_option synthInstance.maxHeartbeats 200000 in
 set_option maxRecDepth 100000 in
 private theorem extension_restrict_smul
     {K L : Type u} [Field K] [Field L]

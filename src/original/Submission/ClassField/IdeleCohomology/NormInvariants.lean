@@ -111,19 +111,23 @@ theorem finite_prime_smul
   rw [heq]
 
 omit [FiniteDimensional K L] in
-/-- `I_{L,T}` is stable under the concrete Galois action on ideles. -/
-theorem ideles_smul
+set_option maxHeartbeats 300000 in
+/-- The finite-coordinate condition defining `I_{L,T}` is stable under the
+concrete Galois action. -/
+theorem ideles_finite_smul
     (S : Finset (NumberFieldPlace K)) (sigma : Gal(L/K))
-    (x : IdeleGroup (RingOfIntegers L) L) (hx : x ∈ idelesAtPlaces S) :
-    letI := idelesGaloisAction (K := K) (L := L)
-    sigma • x ∈ idelesAtPlaces S := by
+    (x : FiniteIdeles (RingOfIntegers L) L)
+    (hx : ∀ Q : HeightOneSpectrum (RingOfIntegers L),
+      (Sum.inl (Q.under (RingOfIntegers K)) : NumberFieldPlace K) ∉ S →
+        x.1 Q ∈ IdeleUnitSubgroup (RingOfIntegers L) L Q) :
+    letI := finitePrimeAction (K := K) (L := L)
+    letI := finiteIdelesAction (K := K) (L := L)
+    ∀ Q : HeightOneSpectrum (RingOfIntegers L),
+      (Sum.inl (Q.under (RingOfIntegers K)) : NumberFieldPlace K) ∉ S →
+        (sigma • x).1 Q ∈ IdeleUnitSubgroup (RingOfIntegers L) L Q := by
   letI := finitePrimeAction (K := K) (L := L)
-  letI := infiniteIdelesAction (K := K) (L := L)
   letI := finiteIdelesAction (K := K) (L := L)
-  letI := idelesGaloisAction (K := K) (L := L)
   intro Q hQ
-  change (sigma • x.2).1 Q ∈
-    IdeleUnitSubgroup (RingOfIntegers L) L Q
   rw [ideles_action_coordinate]
   apply transport_preserves_units
   apply hx
@@ -131,29 +135,59 @@ theorem ideles_smul
   apply hQ
   simpa only [finite_prime_smul] using hmem
 
+set_option maxHeartbeats 1000000 in
 /-- The integral Galois representation on Milne's `I_{L,T}`. -/
 @[implicit_reducible]
 noncomputable def idelesDistribAction
     (S : Finset (NumberFieldPlace K)) :
     MulDistribMulAction Gal(L/K)
       (idelesAtPlaces (K := K) (L := L) S) := by
-  letI := idelesGaloisAction (K := K) (L := L)
+  letI := finitePrimeAction (K := K) (L := L)
+  letI := infiniteIdelesAction (K := K) (L := L)
+  letI := finiteIdelesAction (K := K) (L := L)
   exact
     { smul := fun sigma x =>
-        ⟨sigma • (x : IdeleGroup (RingOfIntegers L) L),
-          ideles_smul S sigma x x.2⟩
-      one_smul := fun x => Subtype.ext
-        (one_smul Gal(L/K) (x : IdeleGroup (RingOfIntegers L) L))
-      mul_smul := fun sigma tau x =>
-        Subtype.ext (mul_smul sigma tau
-          (x : IdeleGroup (RingOfIntegers L) L))
-      smul_one := fun sigma =>
-        Subtype.ext (smul_one sigma :
-          sigma • (1 : IdeleGroup (RingOfIntegers L) L) = 1)
-      smul_mul := fun sigma x y =>
-        Subtype.ext (smul_mul' sigma
-          (x : IdeleGroup (RingOfIntegers L) L)
-          (y : IdeleGroup (RingOfIntegers L) L)) }
+        ⟨((((infiniteIdelesAction (K := K) (L := L)).smul sigma
+              ((x : IdeleGroup (RingOfIntegers L) L).1) :
+              (InfiniteAdeleRing L)ˣ),
+            ((finiteIdelesAction (K := K) (L := L)).smul sigma
+              ((x : IdeleGroup (RingOfIntegers L) L).2) :
+              FiniteIdeles (RingOfIntegers L) L)) :
+            IdeleGroup (RingOfIntegers L) L),
+          by
+            have hfinite :=
+              ideles_finite_smul S sigma
+                ((x : IdeleGroup (RingOfIntegers L) L).2) x.2
+            intro Q hQ
+            exact hfinite Q hQ⟩
+      one_smul := fun x => by
+        apply Subtype.ext
+        apply Prod.ext
+        · exact one_smul Gal(L/K)
+            (x : IdeleGroup (RingOfIntegers L) L).1
+        · exact one_smul Gal(L/K)
+            (x : IdeleGroup (RingOfIntegers L) L).2
+      mul_smul := fun sigma tau x => by
+        apply Subtype.ext
+        apply Prod.ext
+        · exact mul_smul sigma tau
+            (x : IdeleGroup (RingOfIntegers L) L).1
+        · exact mul_smul sigma tau
+            (x : IdeleGroup (RingOfIntegers L) L).2
+      smul_one := fun sigma => by
+        apply Subtype.ext
+        apply Prod.ext
+        · exact smul_one sigma
+        · exact smul_one sigma
+      smul_mul := fun sigma x y => by
+        apply Subtype.ext
+        apply Prod.ext
+        · exact smul_mul' sigma
+            (x : IdeleGroup (RingOfIntegers L) L).1
+            (y : IdeleGroup (RingOfIntegers L) L).1
+        · exact smul_mul' sigma
+            (x : IdeleGroup (RingOfIntegers L) L).2
+            (y : IdeleGroup (RingOfIntegers L) L).2 }
 
 /-- The representation whose Herbrand quotient occurs in Proposition 2.7. -/
 noncomputable abbrev idelesRepresentation

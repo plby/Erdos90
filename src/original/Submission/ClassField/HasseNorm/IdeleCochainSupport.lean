@@ -102,7 +102,10 @@ noncomputable def idelesPlacesIntegral
     { toLinearMap := (MonoidHom.toAdditive inclusion).toIntLinearMap
       isIntertwining' := ?_ }
   intro sigma
-  ext x
+  apply LinearMap.ext
+  intro x
+  apply Additive.toMul.injective
+  apply Subtype.ext
   rfl
 
 /-- The resized transition map between finite-support idèle stages. -/
@@ -125,8 +128,14 @@ noncomputable def idelesInclusionIntegral
           (idelesAtPlaces (K := K) (L := L) S).subtype).toIntLinearMap
       isIntertwining' := ?_ }
   intro sigma
-  ext x
-  rfl
+  apply LinearMap.ext
+  intro x
+  apply Additive.toMul.injective
+  apply Prod.ext
+  · rfl
+  · apply RestrictedProduct.ext
+    intro Q
+    rfl
 
 /-- The resized equivariant inclusion of `I_{L,T}` into the idèles. -/
 noncomputable def resizedInclusion

@@ -21,6 +21,9 @@ noncomputable section
 
 universe u
 
+set_option maxHeartbeats 800000
+set_option synthInstance.maxHeartbeats 200000
+
 variable {R K : Type u} [CommRing R] [IsDedekindDomain R]
   [Field K] [Algebra R K] [IsFractionRing R K]
 
@@ -97,6 +100,8 @@ theorem adic_integers_algebra
 theorem adic_integers_injective
     (v : HeightOneSpectrum R) [Finite (R ⧸ v.asIdeal)] :
     Function.Injective (primeAdicIntegers (K := K) v) := by
+  change Function.Injective (IsLocalization.lift
+    (adic_integers_compl (K := K) v))
   apply (IsLocalization.lift_injective_iff _).2
   intro x y
   rw [(IsLocalization.injective (Localization.AtPrime v.asIdeal)
@@ -131,6 +136,8 @@ theorem adic_integers_range
   let y : v.adicCompletionIntegers K :=
     ⟨algebraMap K (v.adicCompletion K) k, hkint⟩
   have hay : primeAdicIntegers (K := K) v a = y := by
+    change IsLocalization.lift
+        (adic_integers_compl (K := K) v) a = y
     apply (IsLocalization.lift_mk'_spec
       (adic_integers_compl
         (K := K) v) n y d).2

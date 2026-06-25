@@ -19,6 +19,8 @@ The file is intentionally not imported by the existing collection proof.
 namespace Submission
 namespace TCTex
 
+universe u
+
 namespace IVMost
 
 /-- The constant function `1` is an integer-valued polynomial of every degree bound. -/

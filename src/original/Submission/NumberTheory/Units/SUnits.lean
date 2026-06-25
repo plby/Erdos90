@@ -286,11 +286,16 @@ def sValuationUnits (S : Set (FinitePrime K)) :
   (sValuationLinear K S).trans <|
     AddEquiv.toIntLinearEquiv (sValuationIntegers K S).toAdditive
 
+local instance unitsModTorsionCommGroup :
+    CommGroup ((𝓞 K)ˣ ⧸ NumberField.Units.torsion K) :=
+  QuotientGroup.Quotient.commGroup (NumberField.Units.torsion K)
+
 /-- The quotient map from ordinary units to units modulo torsion, as a `ℤ`-linear map. -/
 def modTorsionLinear :
-    Additive (NumberField.RingOfIntegers K)ˣ →ₗ[ℤ]
-      Additive ((NumberField.RingOfIntegers K)ˣ ⧸ NumberField.Units.torsion K) :=
-  (MonoidHom.toAdditive (QuotientGroup.mk' (NumberField.Units.torsion K))).toIntLinearMap
+    Additive (𝓞 K)ˣ →ₗ[ℤ]
+      Additive ((𝓞 K)ˣ ⧸ NumberField.Units.torsion K) :=
+  AddMonoidHom.toIntLinearMap <|
+    MonoidHom.toAdditive (QuotientGroup.mk' (NumberField.Units.torsion K))
 
 /-- The kernel of the quotient by torsion is the torsion subgroup itself. -/
 def unitModTorsion :
@@ -313,8 +318,9 @@ def unitModTorsion :
             (SetLike.ext_iff.mp
               (QuotientGroup.ker_mk' (NumberField.Units.torsion K)) _).mpr x.toMul.2
           have h : QuotientGroup.mk' (NumberField.Units.torsion K) x.toMul.1 = 1 := hxker
-          apply Additive.toMul.injective
-          exact h⟩
+          change Additive.ofMul
+              (QuotientGroup.mk' (NumberField.Units.torsion K) x.toMul.1) = 0
+          simp [h]⟩
       left_inv := fun x ↦ by ext; rfl
       right_inv := fun x ↦ by ext; rfl
       map_add' := fun x y ↦ by ext; rfl }
@@ -323,7 +329,10 @@ def unitModTorsion :
 theorem ring_integers_finrank :
     Module.finrank ℤ (Additive (NumberField.RingOfIntegers K)ˣ) =
       NumberField.Units.rank K := by
-  let f := modTorsionLinear K
+  let f : Additive (NumberField.RingOfIntegers K)ˣ →ₗ[ℤ]
+      Additive
+        ((NumberField.RingOfIntegers K)ˣ ⧸ NumberField.Units.torsion K) :=
+    modTorsionLinear K
   letI : Finite f.ker := Finite.of_equiv (Additive (NumberField.Units.torsion K))
     (unitModTorsion K).symm.toEquiv
   letI : Module.Finite ℤ f.ker := by infer_instance

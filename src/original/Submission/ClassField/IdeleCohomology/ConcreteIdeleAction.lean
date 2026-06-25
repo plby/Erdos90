@@ -251,6 +251,9 @@ theorem field_transport_continuous
   | inr v =>
       exact (number_transport_continuous sigma v).units_map
 
+-- The finite component is a restricted-product action whose instance
+-- synthesis unfolds transported completion data.
+set_option synthInstance.maxHeartbeats 200000 in
 /-- The product action on the full idele group. -/
 @[reducible]
 def idelesGaloisAction :
@@ -259,7 +262,9 @@ def idelesGaloisAction :
   letI := finitePrimeAction (K := K) (L := L)
   letI := finiteIdelesAction (K := K) (L := L)
   exact
-    { smul := fun sigma x ↦ (sigma • x.1, sigma • x.2)
+    { smul := fun sigma x ↦
+        (sigma • x.1,
+          (sigma • x.2 : FiniteIdeles (RingOfIntegers L) L))
       one_smul := fun x ↦ by
         apply Prod.ext
         · exact one_smul Gal(L/K) x.1
@@ -294,6 +299,9 @@ theorem ideles_galois_action
   letI := idelesGaloisAction (K := K) (L := L)
   cases w with
   | inl P =>
+      change ((sigma • x).2 : FiniteIdeles (RingOfIntegers L) L).1 P =
+        Units.map (finitePlaceTransport (K := K) sigma P).toRingHom.toMonoidHom
+          (x.2.1 (sigma⁻¹ • P))
       exact ideles_action_coordinate sigma x.2 P
   | inr v =>
       apply Units.ext
@@ -318,15 +326,21 @@ theorem number_transport_principal
       apply Units.ext
       exact number_transport_embedding sigma v x
 
+set_option synthInstance.maxHeartbeats 200000 in
 omit [FiniteDimensional K L] in
 /-- The action of each Galois element on ideles is continuous. -/
 theorem ideles_galois_continuous (sigma : Gal(L/K)) :
     letI := idelesGaloisAction (K := K) (L := L)
-    Continuous (fun x : IdeleGroup (RingOfIntegers L) L ↦ sigma • x) := by
+    Continuous (fun x : IdeleGroup (RingOfIntegers L) L ↦
+      (sigma • x : IdeleGroup (RingOfIntegers L) L)) := by
   letI := infiniteIdelesAction (K := K) (L := L)
   letI := finitePrimeAction (K := K) (L := L)
   letI := finiteIdelesAction (K := K) (L := L)
   letI := idelesGaloisAction (K := K) (L := L)
+  change Continuous (Prod.map
+    (fun x : (InfiniteAdeleRing L)ˣ ↦ sigma • x)
+    (fun x : FiniteIdeles (RingOfIntegers L) L ↦
+      (sigma • x : FiniteIdeles (RingOfIntegers L) L)))
   exact (infinite_ideles_continuous sigma).prodMap
     (ideles_action_continuous sigma)
 
