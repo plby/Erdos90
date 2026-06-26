@@ -1,6 +1,0 @@
-import Mathlib.NumberTheory.Padics.MahlerBasis
-import Mathlib.RingTheory.PowerSeries.Binomial
-import Submission.ClassField.FormalGroups.PAdicIntegers
-import Submission.ClassField.FormalGroups.LubinTateHomomorphism
-import Submission.ClassField.FormalGroups.PadicBinomialContinuity
-

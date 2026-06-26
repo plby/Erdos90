@@ -1,3 +1,0 @@
-import Submission.NumberTheory.Completions.DifferentCompletionTrace
-import Mathlib.RingTheory.Localization.Module
-

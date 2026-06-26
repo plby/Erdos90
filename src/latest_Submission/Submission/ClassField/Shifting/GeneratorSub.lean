@@ -1,4 +1,0 @@
-import Submission.ClassField.Shifting.NormExactSequence
-import Submission.ClassField.Shifting.GroupPeriodicityOdd
-import Submission.ClassField.Shifting.CyclicTateShape
-

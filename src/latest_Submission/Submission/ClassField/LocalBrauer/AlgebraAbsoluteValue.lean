@@ -1,3 +1,0 @@
-import Submission.ClassField.LocalBrauer.DivisionAbsoluteValue
-import Submission.ClassField.LocalBrauer.FieldNormExtension
-

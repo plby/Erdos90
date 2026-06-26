@@ -1,3 +1,0 @@
-import Submission.ClassField.FormalGroups.LubinLinearApproximation
-import Mathlib.RingTheory.MvPowerSeries.Order
-

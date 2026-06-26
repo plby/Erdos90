@@ -1,6 +1,0 @@
-import Submission.ClassField.Ideles.IdeleClassNorm
-import Submission.ClassField.Reciprocity.RestrictedFactorFamily
-import Submission.ClassField.NormIndex.IdeleTowerFinite
-import Submission.ClassField.ReciprocityExistence.GaloisRestriction
-import Submission.ClassField.ReciprocityExistence.Functoriality
-

@@ -1,4 +1,0 @@
-import Submission.NumberTheory.Locals.TeichmullerLifts
-import Submission.NumberTheory.Locals.UnramifiedExtensions
-import Mathlib.FieldTheory.SplittingField.IsSplittingField
-

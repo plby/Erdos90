@@ -1,5 +1,0 @@
-import Submission.ClassField.FormalGroups.UniqueTateIntertwiner
-import Submission.ClassField.FormalGroups.LubinIntertwinerOperations
-import Submission.ClassField.FormalGroups.GroupLawConstructor
-import Submission.ClassField.FormalGroups.Homomorphisms
-

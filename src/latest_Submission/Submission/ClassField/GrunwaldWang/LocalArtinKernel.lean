@@ -1,4 +1,0 @@
-import Submission.ClassField.Reciprocity.ArtinMapStatements
-import Submission.NumberTheory.Galois.PlaceCompletionDegree
-import Submission.ClassField.IdeleCohomology.CompletionProductAction
-

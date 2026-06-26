@@ -1,8 +1,0 @@
-import Mathlib.Algebra.Polynomial.OfFn
-import Mathlib.RingTheory.Polynomial.Eisenstein.Basic
-import Mathlib.Topology.LocallyConstant.Basic
-import Mathlib.RingTheory.Polynomial.GaussLemma
-import Submission.NumberTheory.Locals.CompactValuationSubsets
-import Submission.NumberTheory.Locals.PolynomialStability
-import Submission.NumberTheory.Locals.TotallyRamifiedEisenstein
-

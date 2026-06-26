@@ -1,3 +1,0 @@
-import Submission.NumberTheory.Completions.DifferentSemilocalRecovery
-import Mathlib.RingTheory.FractionalIdeal.Extended
-

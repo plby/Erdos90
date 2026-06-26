@@ -1,2 +1,0 @@
-import Submission.NumberTheory.Completions.DifferentCompletionTrace
-

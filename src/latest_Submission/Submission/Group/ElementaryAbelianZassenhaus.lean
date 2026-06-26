@@ -1,3 +1,0 @@
-import Submission.FieldTheory.ElementaryAbelian
-import Submission.Group.GolodShafarevichCore
-

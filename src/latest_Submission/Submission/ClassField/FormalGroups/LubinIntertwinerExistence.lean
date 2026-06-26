@@ -1,3 +1,0 @@
-import Submission.ClassField.FormalGroups.LubinApproximationLimit
-import Submission.ClassField.FormalGroups.LubinIntertwinerPredicate
-

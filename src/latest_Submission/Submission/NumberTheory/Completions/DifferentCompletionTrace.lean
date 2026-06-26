@@ -1,5 +1,0 @@
-import Mathlib.RingTheory.DedekindDomain.Different
-import Submission.NumberTheory.Completions.CompletionNormTrace
-import Submission.NumberTheory.Completions.CompletedValuationExtension
-import Submission.NumberTheory.Completions.NormTraceProduct
-

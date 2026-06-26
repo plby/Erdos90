@@ -1,6 +1,0 @@
-import Mathlib.NumberTheory.Divisors
-import Mathlib.FieldTheory.Normal.Closure
-import Submission.NumberTheory.Locals.FiniteExtensionClasses
-import Submission.NumberTheory.Locals.FiniteFieldExample
-import Submission.NumberTheory.Locals.LocalUnramifiedDecomposition
-

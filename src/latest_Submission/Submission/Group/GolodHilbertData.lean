@@ -1,3 +1,0 @@
-import Submission.Group.GolodShafarevichPresentation
-import Submission.Group.GolodShafarevichNilpotence
-

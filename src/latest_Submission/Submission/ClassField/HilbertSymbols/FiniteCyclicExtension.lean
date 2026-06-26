@@ -1,6 +1,0 @@
-import Submission.ClassField.LocalReciprocity.ResidueMulEquiv
-import Submission.ClassField.HilbertSymbols.PairingTheoreticCore
-import Submission.ClassField.HilbertSymbols.KummerPowerInflation
-import Submission.ClassField.HilbertSymbols.NondegeneracyCore
-import Submission.ClassField.HilbertSymbols.Nondegeneracy
-

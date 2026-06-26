@@ -1,4 +1,0 @@
-import Submission.ClassField.Shifting.SolvableTateZero
-import Submission.ClassField.Shifting.TateCoverClosure
-import Submission.ClassField.Shifting.TateLowerShift
-

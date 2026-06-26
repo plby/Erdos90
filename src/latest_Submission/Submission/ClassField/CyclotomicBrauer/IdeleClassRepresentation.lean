@@ -1,3 +1,0 @@
-import Submission.ClassField.CyclotomicBrauer.CohomologicalInjection
-import Submission.ClassField.IdeleCohomology.CompletionInducedModule
-

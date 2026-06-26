@@ -1,4 +1,0 @@
-import Submission.ClassField.LocalFields.ArchimedeanPlaces
-import Submission.ClassField.LocalFields.NormSubgroups
-import Submission.ClassField.UnramifiedCohom.FiniteFieldNorms
-

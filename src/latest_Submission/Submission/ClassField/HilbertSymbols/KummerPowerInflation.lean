@@ -1,6 +1,0 @@
-import Submission.ClassField.LocalClass.Inflation
-import Submission.ClassField.LocalReciprocity.TateZeroQuotient
-import Submission.ClassField.HilbertSymbols.NormCriterion
-import Submission.ClassField.HilbertSymbols.KummerNormCriterion
-import Submission.ClassField.KummerTheory.PowerClasses
-

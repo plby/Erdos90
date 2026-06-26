@@ -1,3 +1,0 @@
-import Submission.FieldTheory.RationalFinitePlace
-import Submission.NumberTheory.Splitting
-

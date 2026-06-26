@@ -1,7 +1,0 @@
-import Submission.NumberTheory.Locals.FiniteFieldExample
-import Submission.NumberTheory.Locals.UnramifiedResidueLift
-import Submission.ClassField.NormCorrespondence.UnramifiedFrobenius
-import Submission.ClassField.LocalBrauer.LocalField
-import Submission.ClassField.LocalBrauer.UnramifiedAdjoin
-import Mathlib.FieldTheory.SeparableClosure
-

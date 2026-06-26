@@ -1,4 +1,0 @@
-import Submission.ClassField.FormalGroups.UnaryPerturbation
-import Submission.ClassField.FormalGroups.HomogeneousSubstitution
-import Submission.ClassField.FormalGroups.LubinPerturbationLower
-

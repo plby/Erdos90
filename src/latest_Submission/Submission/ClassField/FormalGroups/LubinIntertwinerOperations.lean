@@ -1,3 +1,0 @@
-import Submission.ClassField.FormalGroups.LubinIntertwinerComposition
-import Submission.ClassField.FormalGroups.LubinIntertwinerPredicate
-

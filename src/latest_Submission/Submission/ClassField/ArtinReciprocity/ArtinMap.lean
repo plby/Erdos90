@@ -1,4 +1,0 @@
-import Mathlib.Algebra.FreeAbelianGroup.Finsupp
-import Submission.NumberTheory.Ideals.IdealNormCompatibility
-import Submission.ClassField.RayClassGroups.Frobenius
-

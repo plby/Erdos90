@@ -1,3 +1,0 @@
-import Submission.ClassField.FormalGroups.LubinDegreeCorrection
-import Submission.ClassField.FormalGroups.SubstitutionCongruence
-

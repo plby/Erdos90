@@ -1,3 +1,0 @@
-import Submission.NumberTheory.Quadratic.PrimeFactorization
-import Submission.NumberTheory.Locals.NewtonRootLifting
-

@@ -1,3 +1,0 @@
-import Submission.NumberTheory.Completions.DifferentCompletionBasis
-import Submission.NumberTheory.Completions.ProductDifferent
-

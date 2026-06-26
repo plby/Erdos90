@@ -1,3 +1,0 @@
-import Submission.ClassField.FormalGroups.PowerSeriesUnary
-import Submission.ClassField.FormalGroups.CompositionalInverse
-

@@ -1,7 +1,0 @@
-import Mathlib
-import Submission.Group.PresentedHighDegree
-import Submission.Group.PresentedHilbert
-import Submission.Group.PresentedAugmentationBridge
-import Submission.Group.PresentedAugmentationQuotient
-import Submission.Group.GolodShafarevichCore
-

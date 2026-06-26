@@ -1,4 +1,0 @@
-import Submission.ClassField.LocalReciprocity.LocalUnitsRep
-import Submission.ClassField.LocalExistence.NormFiberCompactness
-import Submission.ClassField.LocalExistence.ClosedImagesKernels
-

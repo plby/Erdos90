@@ -1,3 +1,0 @@
-import Submission.ClassField.FormalGroups.LubinGroupLaw
-import Submission.ClassField.FormalGroups.Homomorphisms
-

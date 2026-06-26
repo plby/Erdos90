@@ -1,3 +1,0 @@
-import Submission.NumberTheory.Quadratic.PrimeDecomposition
-import Mathlib.NumberTheory.LegendreSymbol.Basic
-

@@ -1,3 +1,0 @@
-import Submission.NumberTheory.Locals.WeakApproximation
-import Submission.NumberTheory.Locals.CompletionUniversal
-

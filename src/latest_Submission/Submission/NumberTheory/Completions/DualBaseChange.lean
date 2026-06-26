@@ -1,3 +1,0 @@
-import Submission.NumberTheory.Completions.FractionRingBridge
-import Submission.NumberTheory.Completions.DifferentTransport
-

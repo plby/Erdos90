@@ -1,3 +1,0 @@
-import Submission.ClassField.FormalGroups.SubstitutionCongruence
-import Submission.ClassField.FormalGroups.LubinBaseApproximation
-

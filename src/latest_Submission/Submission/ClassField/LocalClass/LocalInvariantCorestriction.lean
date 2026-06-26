@@ -1,2 +1,0 @@
-import Submission.ClassField.CohomologyOps.RestrictionCompatibility
-

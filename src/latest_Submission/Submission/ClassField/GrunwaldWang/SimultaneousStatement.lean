@@ -1,4 +1,0 @@
-import Submission.ClassField.NormCorrespondence.LocalStatements
-import Submission.ClassField.Ideles.IdeleNorm
-import Submission.ClassField.GrunwaldWang.GrunwaldWangStatement
-

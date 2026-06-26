@@ -1,4 +1,0 @@
-import Submission.NumberTheory.Locals.LocalUnramifiedDecomposition
-import Submission.NumberTheory.Locals.TeichmullerSplitting
-import Mathlib.FieldTheory.Finite.Extension
-

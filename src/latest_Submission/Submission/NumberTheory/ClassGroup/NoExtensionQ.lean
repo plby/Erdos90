@@ -1,6 +1,0 @@
-import Submission.NumberTheory.Discriminant.NumberFieldDiscriminant
-import Submission.NumberTheory.Discriminant.FiniteIndexDiscriminant
-import Submission.NumberTheory.Ramification.KummerFactorization
-import Submission.NumberTheory.Ramification.RamificationDiscriminant
-import Mathlib.NumberTheory.NumberField.Discriminant.Different
-

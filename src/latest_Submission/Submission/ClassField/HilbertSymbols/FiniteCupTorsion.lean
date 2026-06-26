@@ -1,7 +1,0 @@
-import Submission.ClassField.LubinTate.CyclotomicRootsModule
-import Submission.ClassField.HilbertSymbols.FiniteCyclicExtension
-import Submission.ClassField.HilbertSymbols.FiniteCharacter
-import Submission.ClassField.HilbertSymbols.NondegeneracyCore
-import Submission.ClassField.HilbertSymbols.Nondegeneracy
-import Submission.ClassField.KummerTheory.PowerClasses
-

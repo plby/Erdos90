@@ -1,3 +1,0 @@
-import Submission.ClassField.Shifting.BarProjection
-import Submission.ClassField.ArtinReciprocity.Verlagerung
-

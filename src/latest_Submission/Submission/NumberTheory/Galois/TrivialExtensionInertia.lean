@@ -1,3 +1,0 @@
-import Submission.NumberTheory.ClassGroup.NoExtensionQ
-import Mathlib.NumberTheory.RamificationInertia.Galois
-
