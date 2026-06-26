@@ -17,9 +17,3 @@ rev = "v4.30.0"
 
 [[lean_lib]]
 name = "Towers"
-
-[[lean_lib]]
-name = "ChallengeDeps"
-
-[[lean_lib]]
-name = "Submission"
