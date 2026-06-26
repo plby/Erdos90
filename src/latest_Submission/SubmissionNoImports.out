@@ -1,0 +1,5 @@
+/home/boris/leanproj/Erdos90/src/latest_Submission/SubmissionNoImports.lean:190746:16: error: private declaration `Submission.HallTree.list_ite_nodup` has already been declared
+/home/boris/leanproj/Erdos90/src/latest_Submission/SubmissionNoImports.lean:190864:16: error: private declaration `Submission.HallTree.list_ite_nodup` has already been declared
+/home/boris/leanproj/Erdos90/src/latest_Submission/SubmissionNoImports.lean:191104:16: error: private declaration `Submission.HallTree.list_ite_nodup` has already been declared
+/home/boris/leanproj/Erdos90/src/latest_Submission/SubmissionNoImports.lean:191833:16: error: private declaration `Submission.HallTree.sort_univ_fintype` has already been declared
+/home/boris/leanproj/Erdos90/src/latest_Submission/SubmissionNoImports.lean:230764:0: error: invalid 'import' command, it must be used in the beginning of the file
