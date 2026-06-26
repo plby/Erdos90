@@ -76,7 +76,7 @@ theorem fixed_base_change
 
 /-- The local invariant and its base-change formula supply the ambient
 fundamental class and cardinality in Tate's theorem. -/
-noncomputable def tateTwoShift
+noncomputable def invariantTateTwoShift
     (invK : BrauerGroup K ≃* Multiplicative LocalInvariant)
     (invL : BrauerGroup L ≃* Multiplicative LocalInvariant)
     (hbase : ∀ x : BrauerGroup K,
